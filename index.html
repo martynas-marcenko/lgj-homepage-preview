@@ -103,10 +103,10 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .card{flex:1 1 0;min-width:0;}
 .card__media{position:relative;aspect-ratio:3/4;background:#fff;overflow:hidden;}
 .card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.card__media .card__worn{opacity:0;transition:opacity .5s ease;}
+.card__media .card__worn{display:none;}   /* hover swap disabled for now */
 .card:hover .card__worn{opacity:1;}
 .card__tag{position:absolute;top:16px;left:16px;font-size:13px;color:#111;z-index:2;}
-.card__fav{position:absolute;top:14px;right:14px;z-index:2;color:#111;}
+.card__fav{display:none;}   /* favorite heart removed */
 .card__fav svg{width:22px;height:22px;display:block;}
 .card__title{margin:16px 0 4px;font-size:15px;color:#fff;}
 .card__meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
@@ -127,7 +127,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .info__panel{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px;}
 .info__card{position:relative;width:284px;max-width:70%;aspect-ratio:3/4;background:#fff;overflow:hidden;}
 .info__card img{width:100%;height:100%;object-fit:cover;}
-.info__fav{position:absolute;top:16px;right:16px;color:#111;}
+.info__fav{display:none;}   /* favorite heart removed */
 .info__fav svg{width:22px;height:22px;}
 .info__label{align-self:flex-start;width:284px;max-width:70%;margin:16px auto 0;}
 .info__panel{align-items:center;}
