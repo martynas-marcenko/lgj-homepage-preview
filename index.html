@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luxury Garment Jewelry — 18K gold accessories for the modern gentleman</title>
+<meta name="description" content="18K gold accessories for the modern gentleman. Made-to-order fine jewelry for your garment — hallmarked, individually numbered, certified.">
+
+<!-- Headings: Baskervville. Body/UI: system sans (matches the current render). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- GSAP (hero letter-morph, Process/Bespoke pins, section reveals) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════
+   LGJ — Luxury Garment Jewelry · homepage (clean rebuild)
+   Hand-written HTML + CSS. No build, no framework, no Framer.
+   The scroll-effect sections (hero morph, Certificate/Process/Bespoke,
+   video reel) are the hand-authored GSAP components, appended below.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --ink:#0B0B0B;          /* near-black ground */
+  --dark:#121212;         /* section dark (product grid) */
+  --paper:#FAFAFA;        /* near-white */
+  --gold:#D6C19D;         /* champagne gold — accent only */
+  --line:rgba(255,255,255,.14);
+  --muted:rgba(255,255,255,.55);
+  --serif:"Baskervville",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --container:1360px;
+  --pad:40px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip;}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;margin:0;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+.wrap{max-width:var(--container);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+
+/* ─────────────────────────── NAV (fixed, transparent) ─────────────────── */
+.nav{position:absolute;top:0;left:0;right:0;z-index:50;padding:22px var(--pad) 20px;}
+.nav__inner{position:relative;max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav__group{display:flex;align-items:center;gap:24px;}
+.nav__group--center{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;gap:0;pointer-events:none;}
+.nav__side{flex:1;display:flex;align-items:center;gap:28px;}
+.nav__side--dark{justify-content:flex-end;padding-right:14px;}
+.nav__side--light{justify-content:flex-start;padding-left:14px;}
+.nav__side .nav__link{pointer-events:auto;}
+.nav__side--light .nav__link{color:var(--ink);}
+.nav__group--right{gap:20px;}
+.nav__group--right .nav__desk,.nav__group--right .nav__bag{color:var(--ink);}   /* over the light (woman) half */
+.nav a,.nav button{color:#fff;font-size:14px;font-weight:500;letter-spacing:-.02em;line-height:1;}
+.nav a{opacity:.9;transition:opacity .25s;}
+.nav a:hover{opacity:1;}
+.nav__logo{position:relative;flex:0 0 auto;color:#fff;text-decoration:none;}
+.nav__logo-mark{display:block;font-family:var(--serif);font-weight:500;font-size:52px;letter-spacing:.03em;line-height:1;}
+.nav__logo-sub{position:absolute;top:calc(100% + 6px);left:2px;white-space:nowrap;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+.nav__menu{display:none;}                 /* mobile only */
+.nav__divider{display:none;color:rgba(255,255,255,.4);}
+
+/* ─────────────────────────── HERO — split banner ─────────────────────── */
+.xhero{background:var(--ink);}
+.xhero__pair{display:flex;}
+.xhero__half{position:relative;flex:1 1 50%;aspect-ratio:1/1;overflow:hidden;}
+.xhero__half img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block;}
+.xhero__half:first-child img{object-position:50% 100%;}   /* man: crop below the nose/jaw */
+.xhero__line{font-family:var(--serif);font-weight:500;color:var(--paper);text-align:center;font-size:clamp(24px,3.4vw,46px);letter-spacing:-.01em;line-height:1.12;margin:0;padding:42px 24px 50px;}
+
+/* ─────────────────────────── BRANDS / "THE GUARANTEE" ─────────────────── */
+.brands{background:var(--ink);padding:100px 0 50px;}
+.brands .wrap{max-width:none;}   /* press bar spans full width (space-evenly), like the original */
+.brands__eyebrow{font-size:12px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:#fff;text-align:center;margin:0 0 40px;}
+.brands__row{display:flex;align-items:center;justify-content:space-evenly;gap:24px;flex-wrap:wrap;}
+.brands__logo{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:.06em;color:#fff;opacity:.92;white-space:nowrap;}
+
+/* ─────────────────────────── PRODUCT GRID (Signature / New) ───────────── */
+.grid{background:var(--ink);padding:100px 0 50px;}
+.grid .wrap{max-width:none;}     /* cards fill the full width, like the original */
+.grid__head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:25px;}
+.grid__tabs{display:flex;align-items:baseline;gap:20px;}
+.grid__tab{font-family:var(--serif);font-size:30px;font-weight:500;color:#fff;letter-spacing:-.01em;}
+.grid__tab[aria-selected="false"]{color:rgba(255,255,255,.4);}
+.grid__all{font-size:14px;color:#fff;opacity:.85;}
+.grid__cards{display:flex;gap:15px;}
+.card{flex:1 1 0;min-width:0;}
+.card__media{position:relative;aspect-ratio:3/4;background:#fff;overflow:hidden;}
+.card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.card__media .card__worn{opacity:0;transition:opacity .5s ease;}
+.card:hover .card__worn{opacity:1;}
+.card__tag{position:absolute;top:16px;left:16px;font-size:13px;color:#111;z-index:2;}
+.card__fav{position:absolute;top:14px;right:14px;z-index:2;color:#111;}
+.card__fav svg{width:22px;height:22px;display:block;}
+.card__title{margin:16px 0 4px;font-size:15px;color:#fff;}
+.card__meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+
+/* ─────────────────────────── CATEGORIES ("How do I wear it") ──────────── */
+.howto{background:var(--ink);padding:50px 0;}
+.howto__title{font-family:var(--serif);font-size:34px;padding:0 var(--pad);margin:0 0 30px;}
+.howto__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:0 var(--pad);}
+.howto__tile{position:relative;aspect-ratio:440/599;overflow:hidden;}
+.howto__tile img{width:100%;height:100%;object-fit:cover;}
+.howto__label{position:absolute;left:0;right:0;bottom:34px;text-align:center;color:#fff;font-size:17px;}
+
+/* ─────────────────────────── INFO (editorial + product) ───────────────── */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-bottom:50px;background:var(--ink);}
+.info__media{position:relative;aspect-ratio:720/1179;overflow:hidden;}
+.info__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.info__caption{position:absolute;left:32px;bottom:28px;color:#fff;font-size:15px;z-index:1;}
+.info__panel{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px;}
+.info__card{position:relative;width:284px;max-width:70%;aspect-ratio:3/4;background:#fff;overflow:hidden;}
+.info__card img{width:100%;height:100%;object-fit:cover;}
+.info__fav{position:absolute;top:16px;right:16px;color:#111;}
+.info__fav svg{width:22px;height:22px;}
+.info__label{align-self:flex-start;width:284px;max-width:70%;margin:16px auto 0;}
+.info__panel{align-items:center;}
+.info__label-name{font-size:15px;color:#fff;}
+.info__label-meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.info--rev .info__media{order:2;}
+.info--rev .info__panel{order:1;}
+
+/* ─────────────────────────── FOLLOW US ────────────────────────────────── */
+.followus{background:var(--ink);text-align:center;padding:40px 0 56px;}
+.followus__eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+.followus__handle{font-family:var(--serif);font-size:34px;color:#fff;}
+
+/* ─────────────────────────── NEWSLETTER ("Join the list") ─────────────── */
+.newsletter{position:relative;min-height:640px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--ink);overflow:hidden;}
+.newsletter img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.9;}
+.newsletter__inner{position:relative;z-index:1;padding:40px 24px;width:min(92vw,520px);}
+.newsletter__title{font-family:var(--serif);font-size:clamp(40px,5vw,60px);color:#fff;margin:0 0 14px;}
+.newsletter__copy{color:rgba(255,255,255,.85);font-size:16px;max-width:22ch;margin:0 auto 26px;}
+.newsletter__form{display:flex;gap:10px;justify-content:center;}
+.newsletter__form input{flex:1;max-width:280px;padding:13px 16px;border-radius:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.55);color:#fff;font-size:15px;}
+.newsletter__form input::placeholder{color:rgba(255,255,255,.72);}
+.newsletter__form button{padding:13px 22px;border-radius:8px;background:var(--gold);color:#0B0B0B;font-weight:600;font-size:15px;}
+
+/* ─────────────────────────── FOOTER ───────────────────────────────────── */
+.footer{background:var(--ink);border-top:1px solid var(--line);}
+.footer__top{max-width:var(--container);margin:0 auto;padding:56px var(--pad) 40px;display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px;}
+.footer__brand-name{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.06em;color:#fff;}
+.footer__brand-tag{margin:12px 0 22px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+.footer__social{display:flex;gap:16px;}
+.footer__social a{color:#fff;opacity:.85;}
+.footer__social svg{width:20px;height:20px;display:block;}
+.footer__col h4{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 16px;}
+.footer__col ul{list-style:none;margin:0;padding:0;}
+.footer__col li{margin-bottom:12px;}
+.footer__col a{font-size:15px;color:#fff;opacity:.9;}
+.footer__col a:hover{opacity:1;}
+.footer__bottom{max-width:var(--container);margin:0 auto;padding:20px var(--pad) 40px;display:flex;align-items:center;justify-content:space-between;}
+.footer__copy{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.footer__pay{display:flex;gap:8px;}
+.footer__pay span{font-size:9px;font-weight:700;letter-spacing:.02em;color:#111;background:#e9e9e9;border-radius:3px;padding:5px 6px;line-height:1;}
+
+/* ─────────────────────────── RESPONSIVE ───────────────────────────────── */
+@media (max-width:809.98px){
+  :root{--pad:20px;}
+  /* hero: 2-column split (man | woman) side by side on mobile — slightly taller than square (image cropped via object-fit:cover, never stretched) */
+  .xhero__half{aspect-ratio:5/6;}
+  /* man image: zoom in from the bottom so less of his face shows (uniform scale, no stretch) */
+  .xhero__half:first-child img{transform:scale(1.4);transform-origin:50% 100%;}
+  /* mobile: nav is a solid top bar (not overlaying the hero); the split images sit below it */
+  .nav{position:relative;background:var(--ink);padding:16px var(--pad);}
+  .nav__logo{text-align:center;}
+  .nav__logo-mark{font-size:30px;}
+  .nav__logo-sub{position:static;display:block;margin-top:4px;font-size:10px;letter-spacing:.16em;text-align:center;color:rgba(255,255,255,.85);}
+  /* everything sits on the dark bar now → all white */
+  .nav__group--right .nav__bag,.nav__divider{color:#fff;}
+  /* nav collapses: Menu · LGJ · Bag (0) */
+  .nav__group .nav__link,.nav__group--right .nav__desk{display:none;}
+  .nav__menu{display:inline;}
+  .nav__divider{display:none;}
+
+  .brands__row{gap:18px 28px;}
+  .brands__logo{font-size:18px;}
+
+  .grid{padding-top:0;padding-bottom:25px;}   /* drop the 100px gap under the hero on mobile; 25px bottom */
+  .grid__cards{gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .card{flex:0 0 72%;scroll-snap-align:start;}
+  .grid__tab{font-size:24px;}
+  .grid__tabs{gap:10px;}   /* half the gap between Signature / New */
+  .grid__head{margin-bottom:12px;}   /* tighten the gap under the Signature/New row */
+
+  .howto{padding:25px 0;}   /* was 50px top/bottom */
+  /* howto: horizontal slider like the Signature grid above */
+  .howto__grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .howto__tile{flex:0 0 72%;scroll-snap-align:start;}
+  .howto__title{font-size:26px;}
+
+  .info{grid-template-columns:1fr;padding-bottom:25px;}   /* was 50px */
+  .info__media{aspect-ratio:4/5;position:relative;min-height:0;}
+  .info--rev .info__media{order:1;}
+  .info--rev .info__panel{order:2;}
+  .info__panel{padding:44px 20px 56px;}
+  .info--rev{padding-bottom:0;}   /* mobile: drop the extra gap under the Aglets card */
+
+  .newsletter{min-height:520px;}
+  .footer__top{grid-template-columns:1fr 1fr;gap:28px;}
+  .footer__brand{grid-column:1 / -1;}
+  .footer__bottom{flex-direction:column;gap:16px;align-items:flex-start;}
+}
+
+/* Custom scroll-effect sections — mobile sizing (from the hand-added parts) */
+@media (max-width:768px){
+  #xhero .xh-frame{width:88vw;height:56vh;}
+  #xhero .xh-title,
+  #xhero .xh-text .paragraph,
+  #xhero .xh-text .all-paragraphs,
+  #xhero .xh-text .all-paragraphs-line{font-size:clamp(19px,5.4vw,34px);}
+  #xhero .xh-scroll{bottom:max(24px,env(safe-area-inset-bottom));}
+  .mwg_effect031 .scroll .s-kicker{font-size:clamp(28px,9vw,44px);}
+  .mwg_effect031 .s-title{font-size:clamp(40px,13vw,74px);}
+  .mwg_effect031 .s-cap{font-size:14px;max-width:30ch;}
+  .mwg_effect064 .text{font-size:min(34px,8.5vw);max-width:14em;}
+  .vidslider{padding-top:64px;}
+  .vidslider__nav{display:none;}   /* swipe on mobile — no arrow buttons */
+  .vidslider__title{font-size:24px;}
+  .vslide{flex-basis:37vw;}   /* ~2.5 cards visible on mobile (vw: % collapses under max-content track) */
+}
+</style>
+
+<style>
+#xhero{position:relative;height:220vh;background:#0B0B0B;}
+#xhero .xh-sticky{position:sticky;top:0;height:100vh;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#xhero .xh-frame{position:relative;width:56vw;height:66vh;overflow:hidden;border-radius:2px;will-change:width,height;}
+#xhero .xh-frame img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block;}
+#xhero .xh-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,11,.15) 0%,rgba(11,11,11,.05) 45%,rgba(11,11,11,.55) 100%);pointer-events:none;}
+#xhero .xh-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;color:#FAFAFA;width:min(90vw,900px);z-index:2;}
+#xhero .xh-title{font-family:'Baskervville',Georgia,serif;font-weight:500;line-height:1.02;letter-spacing:-.01em;font-size:clamp(40px,6vw,86px);margin:0;color:#FAFAFA;}
+#xhero .xh-scroll{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:2;}
+#xhero .xh-scroll span{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D6C19D;}
+#xhero .xh-scroll::after{content:'';width:1px;height:42px;animation:xhBob 1.8s ease-in-out infinite;background:linear-gradient(180deg,rgba(214,193,157,.9),rgba(214,193,157,0));}
+@keyframes xhBob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+/* letter-by-letter morph between the two statements — bold */
+#xhero .xh-text .paragraph{font-family:'Baskervville',Georgia,serif;font-weight:500;line-height:1.02;letter-spacing:-.01em;font-size:clamp(40px,6vw,86px);position:absolute;left:0;top:0;width:min(90vw,900px);visibility:hidden;color:#FAFAFA;}
+#xhero .xh-text .all-paragraphs{font-family:'Baskervville',Georgia,serif;font-weight:500;line-height:1.02;letter-spacing:-.01em;font-size:clamp(40px,6vw,86px);display:flex;flex-direction:column;align-items:center;color:#FAFAFA;}
+#xhero .xh-text .all-paragraphs-line{display:flex;flex-wrap:nowrap;width:max-content;}
+#xhero .xh-text .all-paragraphs-line .line:not(:first-child) .char{display:none;}
+#xhero .xh-text .all-paragraphs-line .line:nth-child(1){order:8;}
+#xhero .xh-text .all-paragraphs-line .line:nth-child(2){order:7;}
+#xhero .xh-text .all-paragraphs-line .line:nth-child(3){order:6;}
+#xhero .xh-text .all-paragraphs-line .line:nth-child(4){order:5;}
+</style>
+<style id="mwg037-style">
+.mwg_effect037{position:relative;width:100%;align-self:stretch;background:#0B0B0B;color:#F1F1F1;font:500 22px/1.3 'Inter','Inter Placeholder',-apple-system,BlinkMacSystemFont,sans-serif}
+.mwg_effect037 *{box-sizing:border-box}
+.mwg_effect037 .pin-height{height:500vh}
+.mwg_effect037 .container{position:relative;width:100%;height:100vh;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding:0 clamp(24px,5vw,90px);overflow:hidden}
+.mwg_effect037 .container>*:nth-child(1){justify-self:start}
+.mwg_effect037 .container>*:nth-child(2){justify-self:center}
+.mwg_effect037 .container>*:nth-child(3){justify-self:end}
+.mwg_effect037 .images{width:min(30vw,440px);aspect-ratio:0.75;position:relative}
+.mwg_effect037 .hidden{width:100%;height:100%;position:absolute;top:0;left:0;overflow:hidden;border-radius:0.8vw;-webkit-mask-image:linear-gradient(transparent 100%, #000 125%, #000 225%);mask-image:linear-gradient(transparent 100%, #000 125%, #000 225%)}
+.mwg_effect037 .hidden:first-child{-webkit-mask-image:linear-gradient(transparent -25%, #000 0%, #000 100%);mask-image:linear-gradient(transparent -25%, #000 0%, #000 100%)}
+.mwg_effect037 .media{display:block;width:100%;height:calc(100% + 60px);object-fit:cover;object-position:center}
+.mwg_effect037 .mwg-side{max-width:min(30vw,340px)}
+.mwg_effect037 .mwg-right{text-align:right}
+.mwg_effect037 .mwg-h{font-family:'Baskervville',Georgia,'Times New Roman',Times,serif;font-weight:400;color:#F4F2ED;font-size:clamp(26px,2.4vw,38px);line-height:1.1;letter-spacing:.2px;margin:0 0 20px}
+.mwg_effect037 .mwg-p{font-family:'Inter','Inter Placeholder',sans-serif;font-size:15px;font-weight:500;line-height:1.55;letter-spacing:-.1px;color:#9a9a9a;margin:0}
+.mwg_effect037 .mwg-p+.mwg-p{margin-top:18px}
+.mwg_effect037 .mwg-list{color:#c2c0bb}
+.mwg_effect037 .mwg-url{color:#8f8d88}
+.mwg_effect037 .mwg-cta{display:inline-block;margin-top:26px;font-family:'Inter','Inter Placeholder',sans-serif;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#EDEBE6;text-decoration:none;border-bottom:1px solid rgba(237,235,230,.35);padding-bottom:3px}
+.mwg_effect037 .mwg-mobile-copy{display:none}
+@media (max-width:768px){
+/* keep the pinned scroll — stack the info (heading + changing caption) ABOVE the crossfading image */
+.mwg_effect037 .mwg-mobile-copy{display:none}
+.mwg_effect037 .container{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;padding:0 24px}
+.mwg_effect037 .mwg-left{order:1;max-width:none;text-align:center}
+.mwg_effect037 .mwg-left .mwg-h{margin:0}
+/* scale the image to the viewport HEIGHT too, so heading + caption + image all fit on one screen
+   (aspect-ratio is .75, so a 42vh width cap keeps the image height <= ~56vh) */
+.mwg_effect037 .images{order:3;width:min(66vw,42vh)}
+}
+</style>
+<style id="mwg037-caps-style">
+.mwg_effect037 .mwg-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;text-align:right;width:min(30vw,340px);max-width:min(30vw,340px)}
+.mwg_effect037 .mwg-cap-stack{position:relative;width:100%;min-height:120px}
+.mwg_effect037 .mwg-cap{position:absolute;top:0;right:0;width:100%;opacity:0}
+.mwg_effect037 .mwg-cap-h{font-family:'Inter','Inter Placeholder',sans-serif;font-size:17px;font-weight:500;line-height:1.3;letter-spacing:-.1px;color:#EDEBE6;margin:0 0 8px}
+.mwg_effect037 .mwg-cap-p{font-family:'Inter','Inter Placeholder',sans-serif;font-size:15px;font-weight:500;line-height:1.5;letter-spacing:-.1px;color:#9a9a9a;margin:0}
+.mwg_effect037 .mwg-url-fixed{margin-top:26px}
+@media (max-width:768px){
+.mwg_effect037 .mwg-right{order:2;width:100%;max-width:none;align-items:center;text-align:center}
+.mwg_effect037 .mwg-cap-stack{min-height:92px;width:100%}
+.mwg_effect037 .mwg-cap{left:0;right:0;text-align:center}
+.mwg_effect037 .mwg-cap-h{text-align:center}
+.mwg_effect037 .mwg-cap-p{text-align:center}
+}
+</style>
+<style id="mwg031-style">
+.mwg_effect031{position:relative;width:100%;align-self:stretch;padding:100vh 0;overflow:hidden;background:#0B0B0B;color:#FAFAFA;font:500 22px/1.3 'Inter','Inter Placeholder',-apple-system,BlinkMacSystemFont,sans-serif}
+.mwg_effect031 *{box-sizing:border-box}
+.mwg_effect031 .scroll{position:absolute;top:50vh;left:50%;transform:translate(-50%,-50%);margin:0;text-align:center;z-index:3;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:16px}
+.mwg_effect031 .scroll .s-kicker{font-family:'Baskervville',Georgia,'Times New Roman',Times,serif;font-weight:400;font-size:clamp(30px,5vw,64px);line-height:1;letter-spacing:-.01em;color:#FAFAFA}
+.mwg_effect031 .scroll .s-hint{font-family:'Inter','Inter Placeholder',sans-serif;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#D6C19D}
+.mwg_effect031 .slide{height:100vh}
+.mwg_effect031 .content-wrapper{width:100%;height:100%;perspective:250vw}
+.mwg_effect031 .content{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 10%;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,5vw,72px)}
+.mwg_effect031 .s-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.mwg_effect031 .s-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,11,11,.55) 0%,rgba(11,11,11,.08) 30%,rgba(11,11,11,.18) 58%,rgba(11,11,11,.88) 100%)}
+.mwg_effect031 .s-bottom{position:relative;z-index:2;transform:translateY(-8vh)}
+.mwg_effect031 .s-title{font-family:'Baskervville',Georgia,'Times New Roman',Times,serif;font-weight:400;color:#FAFAFA;font-size:clamp(46px,9vw,140px);line-height:.92;letter-spacing:-.02em;margin:0}
+.mwg_effect031 .s-cap{font-family:'Inter','Inter Placeholder',sans-serif;font-size:clamp(14px,1.25vw,18px);font-weight:500;line-height:1.45;letter-spacing:-.01em;color:rgba(250,250,250,.82);margin:20px 0 0;max-width:40ch}
+@media (max-width:768px){
+.mwg_effect031{padding-top:20vh;padding-bottom:0}          /* was 100vh top+bottom — kill the black void above the header AND the dead screen after the last slide */
+.mwg_effect031 .scroll{top:13vh;left:24px;transform:translateY(-50%);align-items:flex-start;text-align:left}   /* header to the left, left-aligned (like the Signature title) */
+.mwg_effect031 .scroll .s-hint{display:none}   /* remove the SCROLL text on mobile */
+.mwg_effect031 .content{padding:22px}
+.mwg_effect031 .s-cap{font-size:15px;max-width:32ch}
+}
+</style>
+<style id="mwg064-style">
+.mwg_effect064{position:relative;width:100%;background:#0B0B0B;color:#FAFAFA;--font-display:"Baskervville",ui-serif,Georgia,"Times New Roman",serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--gold:#D6C19D;overflow:clip}
+.mwg_effect064 .pin-height{height:400vh}
+.mwg_effect064 .container{position:relative;height:100vh;perspective:250vw;overflow:clip}
+.mwg_effect064 .mwg064-eyebrow{position:absolute;top:88px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none}
+.mwg_effect064 .mwg064-word{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.mwg_effect064 .mwg064-cta{pointer-events:auto;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,250,.72);text-decoration:none;padding-bottom:2px;border-bottom:1px solid rgba(214,193,157,.4);transition:color .3s ease,border-color .3s ease}
+.mwg_effect064 .mwg064-cta:hover{color:#FAFAFA;border-color:var(--gold)}
+.mwg_effect064 .text{font-family:var(--font-display);font-size:min(64px,6.4vw);line-height:1.08;text-align:center;display:flex;flex-direction:column;gap:.12em;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;padding:0 24px;max-width:16em}
+.mwg_effect064 .text .text-g{color:#FAFAFA;font-style:normal}
+.mwg_effect064 .media{width:max(14vw,120px);height:max(14vw,120px);position:absolute;top:50%;left:50%;display:flex;justify-content:center;align-items:center}
+.mwg_effect064 .media img{display:block;border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.mwg_effect064 .media img.landscape{height:auto;width:100%}
+.mwg_effect064 .media img.portrait{width:auto;height:100%}
+@media(max-width:809.98px){.mwg_effect064 .text{left:0;right:0;width:auto;max-width:100%;transform:translateY(-50%);padding:0 22px;font-size:min(38px,8.5vw)}.mwg_effect064 .media{width:max(30vw,120px);height:max(30vw,120px)}}
+</style>
+<style>
+.vidslider{
+  --paper:#FAFAFA; --ink:#0B0B0B; --gold:#D6C19D; --card:#141414;
+  --font-display: "Baskervville", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --s2:8px; --s4:16px; --s5:24px; --s6:32px; --s9:96px;
+  --r-l:8px; --r-pill:999px; --ease:cubic-bezier(.4,0,.2,1); --dur:.32s;
+  --wrap:1240px; --gutter:24px; --track-wide:.18em;
+  color:#FAFAFA; overflow:hidden; width:100%; max-width:100%; min-width:0; padding-top:var(--s9); padding-bottom:var(--s2);
+  font:400 16px/1.55 var(--font-mono);
+}
+.vidslider *,.vidslider *::before,.vidslider *::after{ box-sizing:border-box; }
+.vidslider p{ margin:0; }
+.vidslider .wrap{ max-width:var(--wrap); margin-inline:auto; padding-inline:var(--gutter); }
+.vidslider .eyebrow{ font:500 12px/1.4 var(--font-mono); letter-spacing:var(--track-wide);
+  text-transform:uppercase; color:var(--gold); margin:0; }
+.vidslider h2{ font-family:var(--font-display); font-weight:400; letter-spacing:-.01em; margin:0; }
+.vidslider__head{ display:flex; align-items:flex-end; justify-content:space-between;
+  gap:var(--s5); flex-wrap:wrap; margin-bottom:var(--s6); }
+.vidslider__title{ font-size:35px; line-height:1.2; color:#FAFAFA; margin-top:12px; }
+.vidslider__nav{ display:flex; gap:var(--s2); }
+.vidslider__nav button{
+  flex:0 0 44px; width:44px; height:44px; border-radius:50%;
+  display:grid; place-items:center; cursor:pointer;
+  background:rgba(250,250,250,.08); color:#FAFAFA; border:1px solid rgba(214,193,157,.35);
+  transition:background var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+.vidslider__nav button:hover{ background:rgba(250,250,250,.16); border-color:rgba(214,193,157,.7); }
+.vidslider__nav button svg{ width:18px; height:18px; }
+.vidslider__viewport{
+  overflow-x:auto; overflow-y:hidden; max-width:100%; scroll-snap-type:x mandatory;
+  scrollbar-width:none; -ms-overflow-style:none; cursor:grab;
+  -webkit-overflow-scrolling:touch; }
+.vidslider__viewport::-webkit-scrollbar{ display:none; height:0; }
+.vidslider__viewport.is-dragging{ cursor:grabbing; scroll-snap-type:none; }
+.vidslider__track{
+  display:flex; gap:var(--s4); padding-block:var(--s2);
+  padding-inline:max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+  width:max-content; }
+.vslide{
+  scroll-snap-align:start; position:relative; flex:0 0 max(232px, 20vw);
+  aspect-ratio:9 / 16; border-radius:var(--r-l); overflow:hidden;
+  background:var(--card); display:block; text-decoration:none; }
+.vslide video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  display:block; pointer-events:none; -webkit-user-drag:none; }
+.vslide__shop{
+  position:absolute; inset:0; z-index:2;
+  display:flex; align-items:flex-end; justify-content:flex-start; padding:var(--s4);
+  background:linear-gradient(to top, rgba(11,11,11,.55) 0%, rgba(11,11,11,0) 46%);
+  opacity:0; transition:opacity var(--dur) var(--ease); }
+.vslide:hover .vslide__shop, .vslide:focus-visible .vslide__shop{ opacity:1; }
+.vslide__shop span{
+  display:inline-flex; align-items:center; gap:var(--s2);
+  background:var(--paper); color:var(--ink); font:600 13px/1 var(--font-mono);
+  letter-spacing:.04em; text-transform:uppercase; padding:11px 18px; border-radius:var(--r-pill); }
+.vslide__shop svg{ width:14px; height:14px; }
+@media (max-width:720px){
+  .vidslider__title{ font-size:26px; }
+  .vslide{ flex-basis:37vw; }   /* ~2.5 cards visible on mobile (vw: % collapses under max-content track) */
+}
+</style>
+</head>
+
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<header class="nav">
+  <div class="nav__inner">
+    <button class="nav__menu" type="button" aria-label="Open menu">Menu</button>
+    <a class="nav__logo" href="#" aria-label="LGJ — Luxury Garment Jewelry, home">
+      <span class="nav__logo-mark">LGJ</span>
+      <span class="nav__logo-sub">Luxury Garment Jewelry</span>
+    </a>
+    <nav class="nav__group nav__group--center" aria-label="Primary">
+      <span class="nav__side nav__side--dark">
+        <a class="nav__link" href="#">Shop</a>
+        <a class="nav__link" href="#">Pieces</a>
+        <a class="nav__link" href="#">Bespoke</a>
+      </span>
+      <span class="nav__side nav__side--light">
+        <a class="nav__link" href="#">The House</a>
+        <a class="nav__link" href="#">Craft</a>
+      </span>
+    </nav>
+    <div class="nav__group nav__group--right">
+      <a class="nav__desk" href="#">Favorites</a>
+      <a class="nav__desk" href="#">Search</a>
+      <span class="nav__divider" aria-hidden="true">|</span>
+      <a class="nav__bag" href="#">Bag (0)</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════ HERO — split banner ══════════════════ -->
+<section class="xhero">
+  <div class="xhero__pair">
+    <div class="xhero__half"><img src="img/hero-man.jpg" alt="A man in a black suit wearing 18K gold onyx buttons and a fine gold chain"></div>
+    <div class="xhero__half"><img src="img/hero-woman.jpg" alt="A woman in an ivory blazer wearing 18K gold onyx jewelry"></div>
+  </div>
+  <h1 class="xhero__line">Your jewelry shouldn't end where your clothing begins.</h1>
+</section>
+
+<!-- ══════════════════ PRODUCT GRID — Signature / New ══════════════════ -->
+<section class="grid">
+  <div class="wrap">
+    <div class="grid__head">
+      <div class="grid__tabs">
+        <button class="grid__tab" aria-selected="true">Signature</button>
+        <button class="grid__tab" aria-selected="false">New</button>
+      </div>
+      <a class="grid__all" href="#">See every piece</a>
+    </div>
+    <div class="grid__cards">
+      <!-- 1 · Jacket Buttons -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/jacket-product.jpg" alt="Jacket buttons in 18K gold set with onyx">
+          <img class="card__worn" src="img/jacket-worn.jpg" alt="Jacket buttons worn on a black blazer">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Jacket Buttons</p>
+        <p class="card__meta">18K · Onyx</p>
+      </a>
+      <!-- 2 · Cufflinks -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/aglet-product.jpg" alt="Aglets — 18K gold lace tips">
+          <img class="card__worn" src="img/aglet-worn.jpg" alt="Aglets — 18K gold lace tips, worn">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Aglets</p>
+        <p class="card__meta">18K · Gold</p>
+      </a>
+      <!-- 3 · Collar Corners -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/ed-collar.jpg" alt="Collar corners in 18K white gold">
+          <img class="card__worn" src="img/ed-cufflink.jpg" alt="Collar corners worn on a shirt">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Collar Corners</p>
+        <p class="card__meta">18K · Onyx</p>
+      </a>
+      <!-- 4 · Shirt Buttons -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/ed-sleeve.jpg" alt="Shirt buttons in 18K gold set with onyx">
+          <img class="card__worn" src="img/ed-blouse.jpg" alt="Shirt buttons worn">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Shirt Buttons</p>
+        <p class="card__meta">18K · Onyx</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ HOW DO I WEAR IT ══════════════════ -->
+<section class="howto">
+  <h2 class="howto__title">How do I wear it</h2>
+  <div class="howto__grid">
+    <a class="howto__tile" href="#"><img src="img/tile-jacket.jpg" alt="Jacket buttons worn"><span class="howto__label">Jacket Buttons</span></a>
+    <a class="howto__tile" href="#"><img src="img/tile-cufflinks.jpg" alt="Cufflinks worn"><span class="howto__label">Cufflinks</span></a>
+    <a class="howto__tile" href="#"><img src="img/tile-collar.jpg" alt="Collar corners worn"><span class="howto__label">Collar Corners</span></a>
+  </div>
+</section>
+
+<!-- ══════════════════ INFO — Onyx ══════════════════ -->
+<section class="info">
+  <div class="info__media">
+    <img src="img/tile-shirt.jpg" alt="Black onyx buttons set in solid gold on a shirt">
+    <p class="info__caption">Natural black onyx, set in solid gold.</p>
+  </div>
+  <div class="info__panel">
+    <div class="info__card">
+      <img src="img/onyx-button-halo.jpg" alt="Onyx button in 18K gold on a dark studio background">
+      <span class="info__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+    </div>
+    <div class="info__label">
+      <p class="info__label-name">Onyx</p>
+      <p class="info__label-meta">18K Gold</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ INFO — Aglets (reversed) ══════════════════ -->
+<section class="info info--rev">
+  <div class="info__media">
+    <img src="img/aglet-worn.jpg" alt="Oxford shoes with 18K gold-tipped laces">
+    <p class="info__caption">Solid gold tips, engraved to order.</p>
+  </div>
+  <div class="info__panel">
+    <div class="info__card">
+      <img src="img/aglet-product.jpg" alt="Aglets — 18K gold lace tips">
+      <span class="info__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+    </div>
+    <div class="info__label">
+      <p class="info__label-name">Aglets</p>
+      <p class="info__label-meta">18K Gold</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CERTIFICATE (GSAP 037) — verbatim ══════════════════ -->
+<section class="mwg_effect037"><div class="mwg-mobile-copy"><h3 class="mwg-h">Certificate</h3><p class="mwg-p">750 parts per thousand is 18K, struck into the metal, not printed on a card.</p><p class="mwg-p mwg-list">Hallmarked 750 &middot; Individually numbered &middot; Certificate of authenticity<br>Solid 18K gold, never plated &middot; Made to order in four to six weeks</p><p class="mwg-p mwg-url">luxurygarmentjewelry.com</p><a class="mwg-cta" href="./">Discover the craft</a></div><div class="pin-height"><div class="container"><div class="mwg-side mwg-left"><h3 class="mwg-h">Certificate</h3></div><div class="images"><div class="hidden"><img class="media" src="img/cert-2.jpg" alt="The 750 hallmark, struck into solid 18K gold"></div><div class="hidden"><img class="media" src="img/cert-1.jpg" alt="The individual serial number, N 0074, stamped into the piece"></div><div class="hidden"><img class="media" src="img/cert-3.jpg" alt="The certificate of authenticity — hallmarked 750, individually numbered No 0074, signed by the master jeweller"></div></div><div class="mwg-side mwg-right"><div class="mwg-cap-stack"><div class="mwg-cap"><p class="mwg-cap-h">Hallmarked 750</p><p class="mwg-cap-p">The 18K mark, struck into the gold.</p></div><div class="mwg-cap"><p class="mwg-cap-h">Individually numbered</p><p class="mwg-cap-p">&#8470;&nbsp;0074 &mdash; no two alike.</p></div><div class="mwg-cap"><p class="mwg-cap-h">Certificate of authenticity</p><p class="mwg-cap-p">Signed by the master jeweller.</p></div></div></div></div></div></section>
+
+<!-- ══════════════════ PROCESS (GSAP 031) — verbatim ══════════════════ -->
+<section class="mwg_effect031"><p class="scroll"><span class="s-kicker">How it works</span><span class="s-hint">Scroll</span></p><div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/order.jpg" alt="Ordering on luxurygarmentjewelry.com"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Order</h3><p class="s-cap">Choose your pieces online. Every order is made to yours &mdash; nothing sits in stock.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/made.jpg" alt="A master jeweller hand-finishing a solid 18K gold onyx button at the bench"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Made</h3><p class="s-cap">4&ndash;6 weeks production time.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/numbered.jpg" alt="The 18K piece struck with the 750 hallmark and individually numbered N 0074"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Numbered</h3><p class="s-cap">No two alike.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/delivered.jpg" alt="The finished 18K gold buttons delivered in a presentation box with certificate"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Delivered</h3><p class="s-cap">Boxed with its certificate of authenticity and sent to your door in four to six weeks.</p></div></div></div></div></div></section>
+
+<!-- ══════════════════ BESPOKE (GSAP 064) — verbatim ══════════════════ -->
+<section class="mwg_effect064"><div class="pin-height"><div class="container"><div class="text"><span>Commission something</span><span class="text-g">that does not exist yet.</span></div><div class="media"><img src="assets/bespoke/01.jpg" alt=""></div><div class="media"><img src="assets/bespoke/02.jpg" alt=""></div><div class="media"><img src="assets/bespoke/03.jpg" alt=""></div><div class="media"><img src="assets/bespoke/04.jpg" alt=""></div><div class="media"><img src="assets/bespoke/05.jpg" alt=""></div><div class="media"><img src="assets/bespoke/06.jpg" alt=""></div><div class="media"><img src="assets/bespoke/07.jpg" alt=""></div><div class="media"><img src="assets/bespoke/08.jpg" alt=""></div><div class="media"><img src="assets/bespoke/09.jpg" alt=""></div><div class="media"><img src="assets/bespoke/10.jpg" alt=""></div><div class="media"><img src="assets/bespoke/11.jpg" alt=""></div><div class="media"><img src="assets/bespoke/12.jpg" alt=""></div></div></div></section>
+
+<!-- ══════════════════ REEL — "Seen on the people" — verbatim ══════════════════ -->
+<section class="vidslider">
+  <div class="wrap vidslider__head">
+    <div>
+      <h2 class="vidslider__title">Seen on the people</h2>
+    </div>
+    <div class="vidslider__nav">
+      <button type="button" data-dir="-1" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button type="button" data-dir="1" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="vidslider__viewport" id="vidslider-viewport">
+  <div class="vidslider__track" id="vidslider-track">
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-1.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-2.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-3.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-4.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-5.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-2.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-1.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-2.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-3.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-4.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-5.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+
+    <a class="vslide" href="#">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="assets/reel-2.mp4" type="video/mp4">
+      </video>
+      <span class="vslide__shop"><span>Discover
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span></span>
+    </a>
+  </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOLLOW US ══════════════════ -->
+<section class="followus">
+  <p class="followus__eyebrow">Follow us</p>
+  <a class="followus__handle" href="https://www.instagram.com/luxurygarmentjewelry" target="_blank" rel="noopener">@luxurygarmentjewelry</a>
+</section>
+
+<!-- ══════════════════ NEWSLETTER — "Join the list" ══════════════════ -->
+<section class="newsletter">
+  <img src="img/ed-seated.jpg" alt="">
+  <div class="newsletter__inner">
+    <h2 class="newsletter__title">Join the list</h2>
+    <p class="newsletter__copy">New pieces and commissions, occasionally. No discount codes.</p>
+    <form class="newsletter__form" onsubmit="return false">
+      <input type="email" placeholder="Email Address" aria-label="Email Address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <div class="footer__brand-name">LGJ</div>
+      <p class="footer__brand-tag">Luxury Garment Jewelry</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7c-2.2 0-3.5 1.4-3.5 3 0 .9.4 1.7 1.1 2 .1 0 .2 0 .2-.2l.2-.7c0-.1 0-.2-.1-.3-.3-.3-.4-.7-.4-1.1 0-1.4 1-2.3 2.4-2.3 1.3 0 2 .8 2 1.9 0 1.4-.6 2.6-1.5 2.6-.5 0-.9-.4-.8-.9.1-.6.5-1.3.5-1.8 0-.4-.2-.8-.7-.8-.6 0-1 .6-1 1.4 0 .5.2.8.2.8l-.7 3c-.1.6 0 1.3 0 1.4 0 .1.1.1.2 0 .1-.1.8-1 1-1.6l.4-1.4c.2.4.8.7 1.4.7 1.8 0 3.1-1.7 3.1-3.9C15.7 8.5 14.2 7 12 7z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2 2 0 11-.02 4 2 2 0 01.02-4zM3 8.98h4V21H3zM9 8.98h3.8v1.64h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Shop</h4>
+      <ul><li><a href="#">All pieces</a></li><li><a href="#">New</a></li><li><a href="#">New</a></li><li><a href="#">Bespoke</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>About</h4>
+      <ul><li><a href="#">LGJ</a></li><li><a href="#">The Certificate</a></li><li><a href="#">Bespoke commissions</a></li><li><a href="#">Details in gold</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>Other</h4>
+      <ul><li><a href="#">FAQ’s</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>Legal</h4>
+      <ul><li><a href="#">Terms of Service</a></li><li><a href="#">Return Policy</a></li><li><a href="#">Privacy Policy</a></li></ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copy">©2026 Luxury Garment Jewelry</p>
+    <div class="footer__pay">
+      <span>VISA</span><span>MC</span><span>AMEX</span><span>PAYPAL</span><span>APPLE&nbsp;PAY</span><span>G&nbsp;PAY</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════ Scripts: GSAP components (verbatim) ══════════════════ -->
+<script id="mwg037-script">
+(function(){
+  function initMWG037(){
+    if(!window.gsap||!window.ScrollTrigger){return}
+    gsap.registerPlugin(ScrollTrigger)
+    var root=document.querySelector('.mwg_effect037')
+    if(!root)return
+    var pinHeight=root.querySelector('.pin-height')
+    var container=root.querySelector('.container')
+    var medias=root.querySelectorAll('.hidden')
+    var mediasChild=root.querySelectorAll('.media')
+    var distancePerImage=(pinHeight.clientHeight-window.innerHeight)/medias.length
+    ScrollTrigger.create({trigger:pinHeight,start:'top top',end:'bottom bottom',pin:container})
+    gsap.to(medias,{maskImage:'linear-gradient(transparent -25%, #000 0%, #000 100%)',stagger:0.5,ease:'power3.inOut',scrollTrigger:{trigger:pinHeight,start:'top top',end:'bottom bottom',scrub:true}})
+    gsap.to(mediasChild,{y:-30,stagger:0.5,ease:'power3.inOut',scrollTrigger:{trigger:pinHeight,start:'top top',end:'bottom bottom',scrub:true}})
+    gsap.to(mediasChild,{y:-60,stagger:0.5,immediateRender:false,ease:'power3.inOut',scrollTrigger:{trigger:pinHeight,start:'top top-='+distancePerImage,end:'bottom bottom-='+distancePerImage,scrub:true}})
+    var caps=root.querySelectorAll('.mwg-cap')
+    if(caps.length){
+      gsap.set(caps,{opacity:0})
+      gsap.set(caps[0],{opacity:1})
+      var n=medias.length, total=1+0.5*(n-1), lastIdx=0
+      ScrollTrigger.create({trigger:pinHeight,start:'top top',end:'bottom bottom',scrub:true,onUpdate:function(self){
+        var p=self.progress, idx=0
+        for(var k=1;k<n;k++){ if((k*0.5+0.5)/total<=p) idx=k }
+        if(idx!==lastIdx){
+          gsap.to(caps[lastIdx],{opacity:0,duration:0.3,ease:'power2.out'})
+          gsap.to(caps[idx],{opacity:1,duration:0.3,ease:'power2.out'})
+          lastIdx=idx
+        }
+      }})
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initMWG037)}else{initMWG037()}
+})()
+</script>
+<script id="mwg031-script">
+(function(){
+  function initMWG031(){
+    if(!window.gsap||!window.ScrollTrigger){return}
+    gsap.registerPlugin(ScrollTrigger)
+    var root=document.querySelector('.mwg_effect031')
+    if(!root)return
+    var slides=root.querySelectorAll('.slide')
+    slides.forEach(function(slide){
+      var contentWrapper=slide.querySelector('.content-wrapper')
+      var content=slide.querySelector('.content')
+      gsap.to(content,{rotationZ:(Math.random()-0.5)*10,scale:0.7,rotationX:40,ease:'power1.in',scrollTrigger:{pin:contentWrapper,trigger:slide,start:'top 0%',end:'+='+window.innerHeight,scrub:true}})
+      gsap.to(content,{autoAlpha:0,ease:'power1.in',scrollTrigger:{trigger:content,start:'top -80%',end:'+='+0.2*window.innerHeight,scrub:true}})
+    })
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initMWG031)}else{initMWG031()}
+})()
+</script>
+<script id="mwg064-script">
+(function(){
+  function initMWG064(){
+    if(!window.gsap||!window.ScrollTrigger){return}
+    gsap.registerPlugin(ScrollTrigger)
+    var root=document.querySelector(".mwg_effect064")
+    if(!root)return
+    var pinHeight=root.querySelector(".pin-height")
+    var container=root.querySelector(".container")
+    var medias=root.querySelectorAll(".media")
+    var text=root.querySelector(".text")
+    var vw=window.innerWidth, vh=window.innerHeight
+    var mediaSize=vw*0.14
+    var total=medias.length
+    var radiusX=(vw-mediaSize)/2, radiusY=(vh-mediaSize)/2
+    var goldenAngle=Math.PI*(3-Math.sqrt(5))
+    var startAngle=Math.random()*Math.PI*2
+    var positions=Array.prototype.map.call(medias,function(_,i){
+      var r=Math.sqrt((i+0.5)/total)
+      var angle=startAngle+i*goldenAngle
+      return {x:Math.cos(angle)*r*radiusX,y:Math.sin(angle)*r*radiusY}
+    })
+    function applyOrientation(img){img.classList.add(img.naturalHeight>img.naturalWidth?"portrait":"landscape")}
+    Array.prototype.forEach.call(medias,function(media,i){
+      gsap.set(media,{opacity:0,x:positions[i].x,y:positions[i].y,xPercent:-50,yPercent:-50})
+      var img=media.querySelector("img")
+      if(img.complete&&img.naturalWidth){applyOrientation(img)}
+      else{img.addEventListener("load",function(e){applyOrientation(e.currentTarget)},{once:true})}
+    })
+    var masterTl=gsap.timeline({scrollTrigger:{trigger:pinHeight,start:"top top",end:"bottom bottom",scrub:1,pin:container}})
+    masterTl.to(text,{autoAlpha:0,scale:0.9,duration:0.5,ease:"power1.in"},0.9)
+    Array.prototype.forEach.call(medias,function(media,index){
+      var startOffset=0.9+index*0.1
+      masterTl.fromTo(media,{z:0.9*vw,scale:1},{z:0,duration:2,ease:"back.out(1.7)"},startOffset)
+      masterTl.to(media,{opacity:1,duration:0.1,ease:"power2.in"},"<")
+    })
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initMWG064)}else{initMWG064()}
+})()
+</script>
+<script>
+(function(){
+  var vp=document.getElementById('vidslider-viewport');
+  if(!vp) return;
+  // drag-to-scroll (mouse); touch/trackpad scroll natively
+  var down=false,sx=0,sl=0,moved=false;
+  vp.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='mouse'&&e.button!==0) return;
+    down=true;moved=false;sx=e.clientX;sl=vp.scrollLeft;
+    vp.classList.add('is-dragging');
+  });
+  window.addEventListener('pointermove',function(e){
+    if(!down) return;
+    var dx=e.clientX-sx;
+    if(Math.abs(dx)>3) moved=true;
+    vp.scrollLeft=sl-dx;
+  });
+  window.addEventListener('pointerup',function(){
+    if(!down) return; down=false; vp.classList.remove('is-dragging');
+  });
+  // suppress the click that ends a drag so cards don't navigate on release
+  vp.addEventListener('click',function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); } },true);
+  // arrows: step by one card width
+  function step(){
+    var c=vp.querySelector('.vslide');
+    return c ? c.getBoundingClientRect().width+16 : 320;
+  }
+  document.querySelectorAll('.vidslider__nav button').forEach(function(b){
+    b.addEventListener('click',function(){
+      vp.scrollBy({left:step()*Number(b.getAttribute('data-dir')),behavior:'smooth'});
+    });
+  });
+})();
+</script>
+<script>(function(){function build(){return;/* split-banner hero: legacy GSAP morph disabled */if(document.getElementById('xhero'))return;var h1=document.querySelector('h1');if(!h1)return;var old=h1;while(old&&old.tagName!=='SECTION')old=old.parentElement;if(!old)return;var hi=document.querySelector('img[src*="hero"]');var src=hi?hi.getAttribute('src'):'img/hero-blue.jpg';var lines=['Jewelry made for your garment.','Details that define individuality.'];var pgs=lines.map(function(t){return '<p class="paragraph">'+t+'</p>';}).join('');var hero=document.createElement('section');hero.id='xhero';hero.innerHTML='<div class="xh-sticky"><div class="xh-frame"><img src="'+src+'" alt=""><div class="xh-scrim"></div></div><div class="xh-text">'+pgs+'<div class="all-paragraphs" aria-hidden="true"></div></div><div class="xh-scroll" aria-hidden="true"><span>Scroll down</span></div></div>';old.parentElement.insertBefore(hero,old);old.style.display='none';var wrap=hero.parentElement;function fit(){wrap.style.height=hero.offsetHeight+'px';wrap.style.flex='0 0 auto';}fit();window.addEventListener('resize',fit);var frame=hero.querySelector('.xh-frame');var groups=[],charsM=[],maxChars=0,pCount=0,easeFn=null;function setupMorph(){var root=hero.querySelector('.xh-text');var paragraphs=root.querySelectorAll('.paragraph');var allC=root.querySelector('.all-paragraphs');var maxLines=0,linesPerP=[];paragraphs.forEach(function(p){var split=SplitText.create(p,{type:'lines, chars',linesClass:'line',charsClass:'char'});split.chars.forEach(function(c){c.removeAttribute('style');});split.lines.forEach(function(l){l.removeAttribute('style');});linesPerP.push(split.lines);if(split.lines.length>maxLines)maxLines=split.lines.length;split.lines.forEach(function(line){var cc=line.querySelectorAll('.char').length;if(cc>maxChars)maxChars=cc;});});for(var li=0;li<maxLines;li++){var g=document.createElement('div');g.className='all-paragraphs-line';linesPerP.forEach(function(pl){var s=pl[li];if(s){g.appendChild(s.cloneNode(true));}else{var ph=document.createElement('div');ph.className='line';g.appendChild(ph);}});allC.appendChild(g);}groups=Array.prototype.slice.call(allC.querySelectorAll('.all-paragraphs-line'));var linesM=groups.map(function(g){return Array.prototype.slice.call(g.querySelectorAll('.line'));});charsM=linesM.map(function(lines){return lines.map(function(line){return Array.prototype.slice.call(line.querySelectorAll('.char'));});});pCount=linesM[0].length;}function morph(p){if(!pCount)return;var pp=p*(pCount-1);var fromI=Math.max(0,Math.floor(pp));var toI=Math.min(pCount-1,fromI+1);var ie=easeFn(pp-fromI);var ci=Math.min(maxChars,Math.max(0,Math.round(ie*maxChars)));var fw=3;var tci=Math.min(maxChars,Math.max(0,ci-fw+1));groups.forEach(function(_,gi){var fc=charsM[gi][fromI];var tc=charsM[gi][toI];if(fromI===toI){if(fc)fc.forEach(function(c){c.style.display='inline';c.style.opacity=1;});}else{if(ie>=0.999){if(fc)fc.forEach(function(c){c.style.display='none';c.style.opacity=0;});if(tc)tc.forEach(function(c){c.style.display='inline';c.style.opacity=1;});return;}if(fc)fc.forEach(function(c,i){var d=ci-i;if(i>=ci){c.style.display='inline';c.style.opacity=1;}else if(d>0&&d<=fw){c.style.display='inline';c.style.opacity=1-(d/fw);}else{c.style.display='none';c.style.opacity=0;}});if(tc)tc.forEach(function(c,i){c.style.display=i<tci?'inline':'none';c.style.opacity=i<tci?1:0;});}});}function lerp(a,b,p){return a+(b-a)*p;}function tick(){var max=hero.offsetHeight-window.innerHeight;if(max<=0)return;var p=Math.min(1,Math.max(0,(-hero.getBoundingClientRect().top)/max));var e=p<0.5?2*p*p:1-Math.pow(-2*p+2,2)/2;frame.style.width=lerp(56,100,e)+'vw';frame.style.height=lerp(66,100,e)+'vh';frame.style.borderRadius=lerp(2,0,e)+'px';var cue=hero.querySelector('.xh-scroll');if(cue)cue.style.opacity=Math.max(0,1-p*14);morph(Math.min(1,p/0.5));}window.addEventListener('scroll',tick,{passive:true});window.addEventListener('resize',tick);function boot(){if(!(window.gsap&&window.SplitText)){return setTimeout(boot,50);}easeFn=gsap.parseEase('power3.inOut');gsap.registerPlugin(SplitText);(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){setupMorph();tick();});}boot();}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);else build();})();</script>
+
+</body>
+</html>
