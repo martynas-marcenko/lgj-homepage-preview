@@ -267,7 +267,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .mwg_effect037 .container>*:nth-child(1){justify-self:start}
 .mwg_effect037 .container>*:nth-child(2){justify-self:center}
 .mwg_effect037 .container>*:nth-child(3){justify-self:end}
-.mwg_effect037 .images{width:min(30vw,440px);aspect-ratio:0.75;position:relative}
+.mwg_effect037 .images{width:min(48vw,720px);aspect-ratio:1.1;position:relative}   /* landscape — LGJ certificate + packaging */
 .mwg_effect037 .hidden{width:100%;height:100%;position:absolute;top:0;left:0;overflow:hidden;border-radius:0.8vw;-webkit-mask-image:linear-gradient(transparent 100%, #000 125%, #000 225%);mask-image:linear-gradient(transparent 100%, #000 125%, #000 225%)}
 .mwg_effect037 .hidden:first-child{-webkit-mask-image:linear-gradient(transparent -25%, #000 0%, #000 100%);mask-image:linear-gradient(transparent -25%, #000 0%, #000 100%)}
 .mwg_effect037 .media{display:block;width:100%;height:calc(100% + 60px);object-fit:cover;object-position:center}
@@ -288,7 +288,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .mwg_effect037 .mwg-left .mwg-h{margin:0}
 /* scale the image to the viewport HEIGHT too, so heading + caption + image all fit on one screen
    (aspect-ratio is .75, so a 42vh width cap keeps the image height <= ~56vh) */
-.mwg_effect037 .images{order:3;width:min(66vw,42vh)}
+.mwg_effect037 .images{order:3;width:min(92vw,64vh)}   /* landscape certificate, large on mobile */
 }
 </style>
 <style id="mwg037-caps-style">
@@ -451,9 +451,8 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
     <div class="grid__head">
       <div class="grid__tabs">
         <button class="grid__tab" aria-selected="true">Signature</button>
-        <button class="grid__tab" aria-selected="false">New</button>
       </div>
-      <a class="grid__all" href="#">See every piece</a>
+      <a class="grid__all" href="#">Discover the Collection</a>
     </div>
     <div class="grid__cards">
       <!-- 1 · Jacket Buttons -->
@@ -487,7 +486,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
           <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
         </div>
         <p class="card__title">Collar Corners</p>
-        <p class="card__meta">18K · Onyx</p>
+        <p class="card__meta">18K · White Gold</p>
       </a>
       <!-- 4 · Shirt Buttons -->
       <a class="card" href="#">
@@ -498,7 +497,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
           <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
         </div>
         <p class="card__title">Shirt Buttons</p>
-        <p class="card__meta">18K · Onyx</p>
+        <p class="card__meta">18K · White Gold</p>
       </a>
     </div>
   </div>
@@ -506,7 +505,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 
 <!-- ══════════════════ HOW DO I WEAR IT ══════════════════ -->
 <section class="howto">
-  <h2 class="howto__title">How do I wear it</h2>
+  <h2 class="howto__title">How It’s Worn</h2>
   <div class="howto__grid">
     <a class="howto__tile" href="#"><img src="img/tile-jacket.jpg" alt="Jacket buttons worn"><span class="howto__label">Jacket Buttons</span></a>
     <a class="howto__tile" href="#"><img src="img/tile-cufflinks.jpg" alt="Cufflinks worn"><span class="howto__label">Cufflinks</span></a>
@@ -551,10 +550,10 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 </section>
 
 <!-- ══════════════════ CERTIFICATE (GSAP 037) — verbatim ══════════════════ -->
-<section class="mwg_effect037"><div class="mwg-mobile-copy"><h3 class="mwg-h">Certificate</h3><p class="mwg-p">750 parts per thousand is 18K, struck into the metal, not printed on a card.</p><p class="mwg-p mwg-list">Hallmarked 750 &middot; Individually numbered &middot; Certificate of authenticity<br>Solid 18K gold, never plated &middot; Made to order in four to six weeks</p><p class="mwg-p mwg-url">luxurygarmentjewelry.com</p><a class="mwg-cta" href="./">Discover the craft</a></div><div class="pin-height"><div class="container"><div class="mwg-side mwg-left"><h3 class="mwg-h">Certificate</h3></div><div class="images"><div class="hidden"><img class="media" src="img/cert-2.jpg" alt="The 750 hallmark, struck into solid 18K gold"></div><div class="hidden"><img class="media" src="img/cert-1.jpg" alt="The individual serial number, N 0074, stamped into the piece"></div><div class="hidden"><img class="media" src="img/cert-3.jpg" alt="The certificate of authenticity — hallmarked 750, individually numbered No 0074, signed by the master jeweller"></div></div><div class="mwg-side mwg-right"><div class="mwg-cap-stack"><div class="mwg-cap"><p class="mwg-cap-h">Hallmarked 750</p><p class="mwg-cap-p">The 18K mark, struck into the gold.</p></div><div class="mwg-cap"><p class="mwg-cap-h">Individually numbered</p><p class="mwg-cap-p">&#8470;&nbsp;0074 &mdash; no two alike.</p></div><div class="mwg-cap"><p class="mwg-cap-h">Certificate of authenticity</p><p class="mwg-cap-p">Signed by the master jeweller.</p></div></div></div></div></div></section>
+<section class="mwg_effect037"><div class="mwg-mobile-copy"><h3 class="mwg-h">Certificate</h3><p class="mwg-p">The 18K hallmark is struck into the metal. Each piece ships with an LGJ Certificate of Authenticity that confirms its identity.</p><p class="mwg-p mwg-list">Hallmarked 750 &middot; Individually numbered &middot; Certificate of authenticity<br>Solid 18K gold, never plated &middot; Made to order in four to six weeks</p><p class="mwg-p mwg-url">luxurygarmentjewelry.com</p><a class="mwg-cta" href="./">Discover the craft</a></div><div class="pin-height"><div class="container"><div class="mwg-side mwg-left"><h3 class="mwg-h">Certificate</h3></div><div class="images"><div class="hidden"><img class="media" src="img/certificate-authenticity.jpg" alt="The LGJ Certificate of Authenticity in its black leather folder with matching packaging"></div><div class="hidden"><img class="media" src="img/certificate-authenticity.jpg" alt="The LGJ Certificate of Authenticity in its black leather folder with matching packaging"></div><div class="hidden"><img class="media" src="img/certificate-authenticity.jpg" alt="The LGJ Certificate of Authenticity in its black leather folder with matching packaging"></div></div><div class="mwg-side mwg-right"><div class="mwg-cap-stack"><div class="mwg-cap"><p class="mwg-cap-h">Hallmarked 750</p><p class="mwg-cap-p">The 18K mark, struck into the gold.</p></div><div class="mwg-cap"><p class="mwg-cap-h">Individually numbered</p><p class="mwg-cap-p">&#8470;&nbsp;0074 &mdash; a unique serial on every piece.</p></div><div class="mwg-cap"><p class="mwg-cap-h">Certificate of authenticity</p><p class="mwg-cap-p">Issued by LGJ.</p></div></div></div></div></div></section>
 
 <!-- ══════════════════ PROCESS (GSAP 031) — verbatim ══════════════════ -->
-<section class="mwg_effect031"><p class="scroll"><span class="s-kicker">How it works</span><span class="s-hint">Scroll</span></p><div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/order.jpg" alt="Ordering on luxurygarmentjewelry.com"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Order</h3><p class="s-cap">Choose your pieces online. Every order is made to yours &mdash; nothing sits in stock.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/made.jpg" alt="A master jeweller hand-finishing a solid 18K gold onyx button at the bench"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Made</h3><p class="s-cap">4&ndash;6 weeks production time.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/numbered.jpg" alt="The 18K piece struck with the 750 hallmark and individually numbered N 0074"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Numbered</h3><p class="s-cap">No two alike.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/delivered.jpg" alt="The finished 18K gold buttons delivered in a presentation box with certificate"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Delivered</h3><p class="s-cap">Boxed with its certificate of authenticity and sent to your door in four to six weeks.</p></div></div></div></div></div></section>
+<section class="mwg_effect031"><p class="scroll"><span class="s-kicker">How it works</span><span class="s-hint">Scroll</span></p><div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/order.jpg" alt="Ordering on luxurygarmentjewelry.com"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Order</h3><p class="s-cap">Choose your pieces online. Every piece is made to order. Nothing sits in stock.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/made.jpg" alt="A master jeweller hand-finishing a solid 18K gold onyx button at the bench"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Made</h3><p class="s-cap">4&ndash;6 weeks production time.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/numbered.jpg" alt="The 18K piece struck with the 750 hallmark and individually numbered N 0074"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Numbered</h3><p class="s-cap">Individually numbered.</p></div></div></div></div><div class="slide"><div class="content-wrapper"><div class="content"><img class="s-media" src="assets/process/delivered.jpg" alt="The finished 18K gold buttons delivered in a presentation box with certificate"><div class="s-scrim"></div><div class="s-bottom"><h3 class="s-title">Delivered</h3><p class="s-cap">Boxed with its certificate of authenticity and sent to your door in four to six weeks.</p></div></div></div></div></div></section>
 
 <!-- ══════════════════ BESPOKE (GSAP 064) — verbatim ══════════════════ -->
 <section class="mwg_effect064"><div class="pin-height"><div class="container"><div class="text"><span>Commission something</span><span class="text-g">that does not exist yet.</span></div><div class="media"><img src="assets/bespoke/01.jpg" alt=""></div><div class="media"><img src="assets/bespoke/02.jpg" alt=""></div><div class="media"><img src="assets/bespoke/03.jpg" alt=""></div><div class="media"><img src="assets/bespoke/04.jpg" alt=""></div><div class="media"><img src="assets/bespoke/05.jpg" alt=""></div><div class="media"><img src="assets/bespoke/06.jpg" alt=""></div><div class="media"><img src="assets/bespoke/07.jpg" alt=""></div><div class="media"><img src="assets/bespoke/08.jpg" alt=""></div><div class="media"><img src="assets/bespoke/09.jpg" alt=""></div><div class="media"><img src="assets/bespoke/10.jpg" alt=""></div><div class="media"><img src="assets/bespoke/11.jpg" alt=""></div><div class="media"><img src="assets/bespoke/12.jpg" alt=""></div></div></div></section>
@@ -563,7 +562,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 <section class="vidslider">
   <div class="wrap vidslider__head">
     <div>
-      <h2 class="vidslider__title">Seen on the people</h2>
+      <h2 class="vidslider__title">Worn by You</h2>
     </div>
     <div class="vidslider__nav">
       <button type="button" data-dir="-1" aria-label="Previous">
@@ -713,7 +712,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
   <img src="img/ed-seated.jpg" alt="">
   <div class="newsletter__inner">
     <h2 class="newsletter__title">Join the list</h2>
-    <p class="newsletter__copy">New pieces and commissions, occasionally. No discount codes.</p>
+    <p class="newsletter__copy">New pieces and private commissions, occasionally. No discount codes.</p>
     <form class="newsletter__form" onsubmit="return false">
       <input type="email" placeholder="Email Address" aria-label="Email Address">
       <button type="submit">Subscribe</button>
@@ -735,7 +734,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
     </div>
     <div class="footer__col">
       <h4>Shop</h4>
-      <ul><li><a href="#">All pieces</a></li><li><a href="#">New</a></li><li><a href="#">New</a></li><li><a href="#">Bespoke</a></li></ul>
+      <ul><li><a href="#">All pieces</a></li><li><a href="#">New</a></li><li><a href="#">Bespoke</a></li></ul>
     </div>
     <div class="footer__col">
       <h4>About</h4>
@@ -743,7 +742,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
     </div>
     <div class="footer__col">
       <h4>Other</h4>
-      <ul><li><a href="#">FAQ’s</a></li><li><a href="#">Contact</a></li></ul>
+      <ul><li><a href="#">FAQs</a></li><li><a href="#">Contact</a></li></ul>
     </div>
     <div class="footer__col">
       <h4>Legal</h4>
