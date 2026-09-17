@@ -98,7 +98,9 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .grid__tabs{display:flex;align-items:baseline;gap:20px;}
 .grid__tab{font-family:var(--serif);font-size:30px;font-weight:500;color:#fff;letter-spacing:-.01em;}
 .grid__tab[aria-selected="false"]{color:rgba(255,255,255,.4);}
-.grid__all{font-size:14px;color:#fff;opacity:.85;}
+.grid__all{font-size:14px;color:#fff;opacity:.85;display:inline-flex;align-items:center;gap:10px;}
+.grid__all svg{width:26px;height:8px;transition:transform .3s ease;}
+.grid__all:hover svg{transform:translateX(5px);}
 .grid__cards{display:flex;gap:15px;}
 .card{flex:1 1 0;min-width:0;}
 .card__media{position:relative;aspect-ratio:3/4;background:#fff;overflow:hidden;}
@@ -452,7 +454,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
       <div class="grid__tabs">
         <button class="grid__tab" aria-selected="true">Signature</button>
       </div>
-      <a class="grid__all" href="#">Discover the Collection</a>
+      <a class="grid__all" href="#">Discover the Collection<svg viewBox="0 0 26 8" fill="none" aria-hidden="true"><path d="M0 4h24M21 1l4 3-4 3" stroke="currentColor" stroke-width="1" stroke-linecap="square"/></svg></a>
     </div>
     <div class="grid__cards">
       <!-- 1 · Jacket Buttons -->
