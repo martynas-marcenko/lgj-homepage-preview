@@ -41,6 +41,7 @@ tr:last-child td{border-bottom:0;}
 .files li{margin:4px 0;}
 .pager{display:flex;justify-content:space-between;gap:24px;margin:48px 0 0;padding-top:16px;border-top:1px solid #e3e3e3;font-size:14px;}
 .pager--top{margin:0 0 28px;padding:0 0 16px;border-top:0;border-bottom:1px solid #e3e3e3;}
+.pager__sibs{display:flex;gap:24px;}
 @media (max-width:760px){
   .doc{padding:20px 16px 48px;}
   .views{grid-template-columns:1fr;}
@@ -51,7 +52,7 @@ tr:last-child td{border-bottom:0;}
 <body>
 <main class="doc">
 
-  <div class="pager pager--top"><a href="../">← Product references</a><a href="../shirt-button/">Shirt button →</a></div>
+  <div class="pager pager--top"><a href="../">← Product references</a><span class="pager__sibs"><a href="../shirt-button/">Shirt button →</a></span></div>
   <h1>Onyx button</h1>
   <h2>Views</h2>
   <div class="views">
@@ -78,7 +79,7 @@ tr:last-child td{border-bottom:0;}
   </div>
   <h2>Files</h2>
   <ul class="files"><li><a href="img/front.jpg" download="onyx-button-front.jpg">onyx-button-front.jpg</a> — Front, 2000 × 2000 px, JPEG</li><li><a href="img/side.jpg" download="onyx-button-side.jpg">onyx-button-side.jpg</a> — Side, 2000 × 2000 px, JPEG</li><li><a href="img/back.jpg" download="onyx-button-back.jpg">onyx-button-back.jpg</a> — Back, 2000 × 2000 px, JPEG</li><li><a href="img/angle.jpg" download="onyx-button-angle.jpg">onyx-button-angle.jpg</a> — Angle, 2000 × 2000 px, JPEG</li></ul>
-  <div class="pager"><a href="../">← Product references</a><a href="../shirt-button/">Shirt button →</a></div>
+  <div class="pager"><a href="../">← Product references</a><span class="pager__sibs"><a href="../shirt-button/">Shirt button →</a></span></div>
 </main>
 </body>
 </html>
