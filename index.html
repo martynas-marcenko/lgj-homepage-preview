@@ -113,18 +113,8 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .card__title{margin:16px 0 4px;font-size:15px;color:#fff;}
 .card__meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
 
-/* ─────────────────────────── SIGNATURE TEST (4:3 renders) ─────────────── */
-.gridtest{background:var(--ink);padding:50px 0 80px;}
-.gridtest .wrap{max-width:none;}
-.gridtest__head{margin-bottom:25px;}
-.gridtest__tab{font-family:var(--serif);font-size:30px;font-weight:500;color:#fff;letter-spacing:-.01em;}
-.gridtest__cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;}
-.cardtest{display:block;min-width:0;}
-.cardtest__media{position:relative;aspect-ratio:4/3;background:#fff;overflow:hidden;}
-.cardtest__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.cardtest__title{margin:16px 0 4px;font-size:15px;color:#fff;}
-.cardtest__meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
-@media(max-width:760px){.gridtest__cards{grid-template-columns:repeat(2,1fr);gap:10px;}}
+/* ─────────────────────── SIGNATURE TEST (duplicated grid) ─────────────── */
+.grid--test{padding-top:0;}
 
 /* ─────────────────────────── CATEGORIES ("How do I wear it") ──────────── */
 .howto{background:var(--ink);padding:50px 0;}
@@ -518,102 +508,59 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
   </div>
 </section>
 
-<!-- ══════════════════ SIGNATURE TEST — 4:3 renders ══════════════════ -->
-<section class="gridtest">
+<!-- ══════════════════ SIGNATURE TEST — Signature component, images swapped ══════════════════ -->
+<section class="grid grid--test">
   <div class="wrap">
-    <div class="grid__head gridtest__head">
-      <div class="grid__tabs"><span class="gridtest__tab">Signature test</span></div>
+    <div class="grid__head">
+      <div class="grid__tabs">
+        <button class="grid__tab" aria-selected="true">Signature test</button>
+      </div>
+      <a class="grid__all" href="#">Discover the Collection<svg viewBox="0 0 26 8" fill="none" aria-hidden="true"><path d="M0 4h24M21 1l4 3-4 3" stroke="currentColor" stroke-width="1" stroke-linecap="square"/></svg></a>
     </div>
-    <div class="gridtest__cards">
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/aglets-pair.jpg" alt="Aglets in 18K white gold"></div>
-        <p class="cardtest__title">Aglets</p>
-        <p class="cardtest__meta">18K · White Gold</p>
+    <div class="grid__cards">
+      <!-- 1 · Jacket Buttons -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/sigtest/onyx-round.jpg" alt="Jacket buttons in 18K gold set with onyx">
+          <img class="card__worn" src="img/jacket-worn.jpg" alt="Jacket buttons worn on a black blazer">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Jacket Buttons</p>
+        <p class="card__meta">18K · White Gold</p>
       </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/aglets-oxford.jpg" alt="Aglets — Worn in 18K white gold"></div>
-        <p class="cardtest__title">Aglets — Worn</p>
-        <p class="cardtest__meta">18K · White Gold</p>
+      <!-- 2 · Cufflinks -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/sigtest/aglets-pair.jpg" alt="Aglets — 18K gold lace tips">
+          <img class="card__worn" src="img/aglet-worn.jpg" alt="Aglets — 18K gold lace tips, worn">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Aglets</p>
+        <p class="card__meta">18K · Yellow Gold</p>
       </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/aglets-sneaker.jpg" alt="Aglets — Worn in 18K white gold"></div>
-        <p class="cardtest__title">Aglets — Worn</p>
-        <p class="cardtest__meta">18K · White Gold</p>
+      <!-- 3 · Collar Corners -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/sigtest/collar-corners.jpg" alt="Collar corners in 18K white gold">
+          <img class="card__worn" src="img/ed-cufflink.jpg" alt="Collar corners worn on a shirt">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Collar Corners</p>
+        <p class="card__meta">18K · White Gold</p>
       </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/collar-corners.jpg" alt="Collar Corners in 18K white gold"></div>
-        <p class="cardtest__title">Collar Corners</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/shirt-buttons.jpg" alt="Shirt Buttons in 18K white gold"></div>
-        <p class="cardtest__title">Shirt Buttons</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/shirt-button-onyx.jpg" alt="Shirt Button in 18K white gold"></div>
-        <p class="cardtest__title">Shirt Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/blazer-smooth.jpg" alt="Blazer Button in 18K white gold"></div>
-        <p class="cardtest__title">Blazer Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/blazer-front-back-angle.jpg" alt="Blazer Button in 18K white gold"></div>
-        <p class="cardtest__title">Blazer Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/blazer-satin.jpg" alt="Blazer Button in 18K white gold"></div>
-        <p class="cardtest__title">Blazer Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/onyx-round.jpg" alt="Onyx Button in 18K white gold"></div>
-        <p class="cardtest__title">Onyx Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/onyx-square.jpg" alt="Onyx Button — Square in 18K white gold"></div>
-        <p class="cardtest__title">Onyx Button — Square</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/onyx-wide.jpg" alt="Onyx Button in 18K white gold"></div>
-        <p class="cardtest__title">Onyx Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/soviet-emblem.jpg" alt="Soviet Emblem Button in 18K white gold"></div>
-        <p class="cardtest__title">Soviet Emblem Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/american-heritage.jpg" alt="American Heritage Button in 18K white gold"></div>
-        <p class="cardtest__title">American Heritage Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/star-of-david.jpg" alt="Star of David Button in 18K white gold"></div>
-        <p class="cardtest__title">Star of David Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/roman-eagle.jpg" alt="Roman Eagle Button in 18K white gold"></div>
-        <p class="cardtest__title">Roman Eagle Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/royal-lion.jpg" alt="Royal Lion Button in 18K white gold"></div>
-        <p class="cardtest__title">Royal Lion Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
-      </a>
-      <a class="cardtest" href="#">
-        <div class="cardtest__media"><img src="img/sigtest/royal-crown.jpg" alt="Royal Crown Button in 18K white gold"></div>
-        <p class="cardtest__title">Royal Crown Button</p>
-        <p class="cardtest__meta">18K · White Gold</p>
+      <!-- 4 · Shirt Buttons -->
+      <a class="card" href="#">
+        <div class="card__media">
+          <img src="img/sigtest/shirt-button-onyx.jpg" alt="Shirt buttons in 18K gold set with onyx">
+          <img class="card__worn" src="img/ed-blouse.jpg" alt="Shirt buttons worn">
+          <span class="card__tag">New</span>
+          <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
+        </div>
+        <p class="card__title">Shirt Buttons</p>
+        <p class="card__meta">18K · White Gold</p>
       </a>
     </div>
   </div>
