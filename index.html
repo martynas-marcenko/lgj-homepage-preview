@@ -101,7 +101,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .grid__all{font-size:14px;color:#fff;opacity:.85;display:inline-flex;align-items:center;gap:10px;}
 .grid__all svg{width:26px;height:8px;transition:transform .3s ease;}
 .grid__all:hover svg{transform:translateX(5px);}
-.grid__cards{display:flex;gap:15px;}
+.grid__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
 .card{flex:1 1 0;min-width:0;}
 .card__media{position:relative;aspect-ratio:3/4;background:#fff;overflow:hidden;}
 .card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
@@ -196,7 +196,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
   .brands__logo{font-size:18px;}
 
   .grid{padding-top:0;padding-bottom:25px;}   /* drop the 100px gap under the hero on mobile; 25px bottom */
-  .grid__cards{gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .grid__cards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
   .card{flex:0 0 72%;scroll-snap-align:start;}
   .grid__tab{font-size:24px;}
   .grid__tabs{gap:10px;}   /* half the gap between Signature / New */
@@ -458,15 +458,15 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
       <a class="grid__all" href="#">Discover the Collection<svg viewBox="0 0 26 8" fill="none" aria-hidden="true"><path d="M0 4h24M21 1l4 3-4 3" stroke="currentColor" stroke-width="1" stroke-linecap="square"/></svg></a>
     </div>
     <div class="grid__cards">
-      <!-- 1 · Jacket Buttons -->
+      <!-- 1 · American Heritage Button -->
       <a class="card" href="#">
         <div class="card__media">
-          <img src="img/sig-jacket.jpg" alt="Jacket buttons in 18K white gold">
-          <img class="card__worn" src="img/jacket-worn.jpg" alt="Jacket buttons worn on a black blazer">
+          <img src="img/sig-heritage.jpg" alt="American Heritage button in 18K white gold">
+          <img class="card__worn" src="img/sig-heritage.jpg" alt="American Heritage button">
           <span class="card__tag">New</span>
           <span class="card__fav" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C.6 8.9 2 5.5 5.2 5.5c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.2 0 4.6 3.4 3.2 6.2C19.5 16.4 12 21 12 21z"/></svg></span>
         </div>
-        <p class="card__title">Jacket Buttons</p>
+        <p class="card__title">American Heritage Button</p>
         <p class="card__meta">18K · White Gold</p>
       </a>
       <!-- 2 · Cufflinks -->
