@@ -211,23 +211,8 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .drawer__body p{font-size:14px;line-height:1.5;color:#fff;margin:0 0 8px;}
 body.drawer-open{overflow:hidden;}
 
-/* ─────────────────────────── MADE TO ORDER (editorial + text) ─────────── */
-.about{display:grid;grid-template-columns:680fr 760fr;align-items:center;margin-top:160px;}
-.about__media{aspect-ratio:680/727;overflow:hidden;}
-.about__media img{width:100%;height:100%;object-fit:cover;}
-.about__text{padding:0 var(--pad) 0 155px;max-width:650px;}
-.about__title{font-family:var(--serif);font-size:30px;font-weight:500;color:#fff;margin:0 0 16px;}
-.about__copy{font-size:14px;line-height:1.5;color:rgba(255,255,255,.72);max-width:42ch;margin:0 0 36px;}
-.about__link{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#fff;padding-bottom:3px;border-bottom:1px solid rgba(255,255,255,.55);}
-
-/* ─────────────────────────── ASSURANCES (icon row) ─────────────────────── */
-.assure{display:flex;justify-content:center;gap:65px;padding:160px var(--pad);}
-.assure__item{width:100px;text-align:center;}
-.assure__item svg{width:26px;height:26px;display:block;margin:0 auto 14px;color:var(--gold);}
-.assure__item p{font-size:14px;font-weight:500;line-height:1.25;letter-spacing:-.02em;color:#fff;margin:0;}
-
 /* ─────────────────────────── YOU MAY ALSO LIKE (homepage card grid) ───── */
-.grid--related{padding-top:0;}
+.grid--related{padding-top:160px;}
 
 /* ─────────────────────────── RESPONSIVE (product page) ─────────────────── */
 @media (max-width:809.98px){
@@ -237,13 +222,9 @@ body.drawer-open{overflow:hidden;}
   .pdp__strip{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 8px;}
   .pdp__strip img{flex:0 0 88%;aspect-ratio:3/4;object-fit:cover;scroll-snap-align:center;}
   .pdp__buy{position:static;padding:28px var(--pad) 0;}
-  .about{grid-template-columns:1fr;margin-top:90px;}
-  .about__media{margin:0 var(--pad);aspect-ratio:350/374;}
-  .about__text{padding:30px var(--pad) 0;}
-  .assure{display:grid;grid-template-columns:1fr 1fr;gap:40px 20px;padding:90px var(--pad);}
-  .assure__item{width:auto;}
   .drawer__head{padding:20px var(--pad);}
   .drawer__body{padding:4px var(--pad) 32px;}
+  .grid--related{padding-top:90px;}
 }
 </style>
 </head>
@@ -340,36 +321,6 @@ body.drawer-open{overflow:hidden;}
       </details>
       <button class="pdp__ship" type="button" aria-controls="ship-drawer" aria-expanded="false">Shipping, Exchange and Returns</button>
     </div>
-  </div>
-</section>
-
-<!-- ══════════════════ MADE TO ORDER ══════════════════ -->
-<section class="about">
-  <div class="about__media"><img src="../../assets/process/made.jpg" alt="A master jeweller hand-finishing a solid 18K gold onyx button at the bench" loading="lazy"></div>
-  <div class="about__text">
-    <h2 class="about__title">Made to order</h2>
-    <p class="about__copy">Every piece is made to order. Nothing sits in stock. Every piece is hallmarked and individually numbered. Each is made to the highest standards of quality and precision.</p>
-    <a class="about__link" href="#">Explore the Onyx Collection</a>
-  </div>
-</section>
-
-<!-- ══════════════════ ASSURANCES ══════════════════ -->
-<section class="assure" aria-label="Assurances">
-  <div class="assure__item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8.2 14.6V9.4M8.2 9.4h1.9M11 14.6l1.3-5.2h1.4M15.2 9.4h1.9l-1.6 5.2"/></svg>
-    <p>Hallmarked 750</p>
-  </div>
-  <div class="assure__item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M9.5 3.5 7 20.5M17 3.5l-2.5 17M4 9h17M3 15h17"/></svg>
-    <p>Individually Numbered</p>
-  </div>
-  <div class="assure__item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="13" rx="1"/><path d="M7 8h10M7 11.5h6"/><circle cx="16" cy="17" r="2.6"/><path d="m14.6 19.2-.8 2.3 2.2-1 2.2 1-.8-2.3"/></svg>
-    <p>Certificate of Authenticity</p>
-  </div>
-  <div class="assure__item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.6 2.2"/></svg>
-    <p>Made to Order</p>
   </div>
 </section>
 
