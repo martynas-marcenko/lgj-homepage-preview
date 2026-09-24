@@ -155,11 +155,10 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .pdp__strip{display:none;}   /* mobile gallery */
 
 .pdp__buy{position:sticky;top:40px;}
-.pdp__eyebrow{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:0 0 17px;}
 .pdp__title{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.05;letter-spacing:-.01em;color:#fff;margin:0 0 12px;}
 .pdp__price{font-size:14px;font-weight:500;line-height:1;color:#fff;margin:0;}
 .pdp__rule{height:1px;background:var(--line);margin:26px 0;}
-.pdp__desc{font-size:14px;line-height:1.3;letter-spacing:-.01em;color:rgba(255,255,255,.85);margin:0 0 23px;}
+.pdp__desc{font-size:14px;line-height:1.3;letter-spacing:-.01em;color:rgba(255,255,255,.85);margin:0 0 12px;}
 
 .pdp__opt{margin:0 0 23px;}
 .pdp__opt-label{font-size:12px;font-weight:500;color:rgba(255,255,255,.72);margin:0 0 10px;}
@@ -171,14 +170,14 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .pdp__swatch--yellow{background:linear-gradient(135deg,#f3e2b0 0%,#c9a24e 48%,#ecd48f 62%,#a8812f 100%);}
 .pdp__swatch--rose{background:linear-gradient(135deg,#f5d3c3 0%,#c98a6f 48%,#efc0aa 62%,#a8674e 100%);}
 
-.pdp__cart{display:flex;gap:10px;height:40px;}
+.pdp__cart{display:flex;gap:10px;height:40px;margin-bottom:17px;}
 .pdp__qty{flex:0 0 108px;display:flex;align-items:center;justify-content:space-between;box-shadow:inset 0 0 0 1px var(--line);padding:0 6px;}
 .pdp__qty button{width:28px;height:28px;font-size:16px;line-height:1;color:rgba(255,255,255,.72);}
 .pdp__qty button:hover{color:#fff;}
 .pdp__qty output{font-size:14px;color:#fff;}
 .pdp__add{flex:1;background:var(--paper);color:var(--ink);font-size:14px;font-weight:500;}
 .pdp__add:hover{background:#fff;}
-.pdp__status{display:flex;align-items:center;justify-content:flex-end;gap:6px;font-size:12px;color:rgba(255,255,255,.85);margin:13px 0 17px;}
+.pdp__status{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.85);margin:0 0 23px;}
 .pdp__status::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);}
 
 .pdp__acc{border-bottom:1px solid var(--line);}
@@ -192,8 +191,25 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .pdp__acc dd{font-size:12px;font-weight:500;color:#fff;margin:4px 0 9px;}
 .pdp__acc p{font-size:12px;line-height:1.5;color:#fff;margin:0 0 9px;}
 .pdp__acc p:last-child{margin-bottom:14px;}
-.pdp__ship{display:inline-block;margin-top:26px;font-size:12px;font-weight:500;color:rgba(255,255,255,.72);padding-bottom:3px;border-bottom:1px solid var(--line);}
+.pdp__ship{display:inline-block;margin-top:26px;padding:0 0 3px;font-size:12px;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
 .pdp__ship:hover{color:#fff;}
+
+/* ─────────────────────────── DRAWER (Shipping, Exchange and Returns) ─── */
+.drawer{position:fixed;inset:0;z-index:100;visibility:hidden;transition:visibility 0s linear .4s;}
+.drawer.is-open{visibility:visible;transition:none;}
+.drawer__scrim{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .4s ease;}
+.drawer.is-open .drawer__scrim{opacity:1;}
+.drawer__panel{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--ink);box-shadow:-1px 0 0 var(--line);
+  display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);}
+.drawer.is-open .drawer__panel{transform:none;}
+.drawer__head{display:flex;align-items:center;justify-content:space-between;padding:24px 30px;border-bottom:1px solid var(--line);}
+.drawer__title{font-family:var(--serif);font-size:24px;font-weight:500;color:#fff;margin:0;}
+.drawer__close{width:32px;height:32px;display:grid;place-items:center;margin-right:-6px;color:#fff;}
+.drawer__close svg{width:16px;height:16px;}
+.drawer__body{flex:1;overflow-y:auto;padding:8px 30px 40px;}
+.drawer__body h3{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:28px 0 10px;}
+.drawer__body p{font-size:14px;line-height:1.5;color:#fff;margin:0 0 8px;}
+body.drawer-open{overflow:hidden;}
 
 /* ─────────────────────────── MADE TO ORDER (editorial + text) ─────────── */
 .about{display:grid;grid-template-columns:680fr 760fr;align-items:center;margin-top:160px;}
@@ -226,6 +242,8 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
   .about__text{padding:30px var(--pad) 0;}
   .assure{display:grid;grid-template-columns:1fr 1fr;gap:40px 20px;padding:90px var(--pad);}
   .assure__item{width:auto;}
+  .drawer__head{padding:20px var(--pad);}
+  .drawer__body{padding:4px var(--pad) 32px;}
 }
 </style>
 </head>
@@ -281,11 +299,11 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
     </div>
 
     <div class="pdp__buy">
-      <p class="pdp__eyebrow">Onyx Collection</p>
       <h1 class="pdp__title">Onyx Button</h1>
       <p class="pdp__price" data-slot="price">Price to be confirmed</p>
       <div class="pdp__rule"></div>
       <p class="pdp__desc">A domed natural black onyx cabochon, set flush in a smooth 18K gold rim, with a sewing shank on the back.</p>
+      <p class="pdp__status">Crafted to order in 4&ndash;6 weeks.</p>
 
       <div class="pdp__opt">
         <p class="pdp__opt-label">Gold: <b id="pdp-gold">White Gold</b></p>
@@ -304,7 +322,6 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
         </div>
         <button class="pdp__add" type="button">Add to Bag</button>
       </div>
-      <p class="pdp__status">Crafted to order in 4&ndash;6 weeks.</p>
 
       <details class="pdp__acc">
         <summary>Material &amp; Details</summary>
@@ -321,7 +338,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
         <p>Every piece is hallmarked and individually numbered.</p>
         <p>Presented in an LGJ box with its Certificate of Authenticity.</p>
       </details>
-      <a class="pdp__ship" href="#">Shipping, Exchange and Returns</a>
+      <button class="pdp__ship" type="button" aria-controls="ship-drawer" aria-expanded="false">Shipping, Exchange and Returns</button>
     </div>
   </div>
 </section>
@@ -422,6 +439,27 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
   </div>
 </footer>
 
+<!-- ══════════════════ DRAWER — Shipping, Exchange and Returns ══════════════════ -->
+<div class="drawer" id="ship-drawer" aria-hidden="true">
+  <div class="drawer__scrim" data-close></div>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="ship-drawer-title" tabindex="-1">
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="ship-drawer-title">Shipping, Exchange and Returns</h2>
+      <button class="drawer__close" type="button" aria-label="Close" data-close><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 2l12 12M14 2 2 14"/></svg></button>
+    </div>
+    <div class="drawer__body">
+      <h3>Made to order</h3>
+      <p>Every piece is made to order. Nothing sits in stock.</p>
+      <p>Crafted to order in 4&ndash;6 weeks.</p>
+      <h3>Delivery</h3>
+      <p>Presented in an LGJ box with its Certificate of Authenticity.</p>
+      <p data-slot="shipping">Shipping regions and costs to be confirmed.</p>
+      <h3>Exchange and returns</h3>
+      <p data-slot="returns">Exchange and returns policy to be confirmed.</p>
+    </div>
+  </aside>
+</div>
+
 <script>
 (function(){
   // gallery: thumbnail swaps the main image
@@ -444,6 +482,15 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
   document.querySelectorAll('.pdp__qty button').forEach(function(b){b.addEventListener('click',function(){
     q.textContent=Math.max(1,(parseInt(q.textContent,10)||1)+parseInt(b.dataset.step,10));
   });});
+  // shipping drawer: slides in from the right, closes on scrim, X or Escape
+  var drawer=document.getElementById('ship-drawer');
+  var opener=document.querySelector('.pdp__ship');
+  var panel=drawer.querySelector('.drawer__panel');
+  function openDrawer(){drawer.classList.add('is-open');drawer.setAttribute('aria-hidden','false');opener.setAttribute('aria-expanded','true');document.body.classList.add('drawer-open');panel.focus();}
+  function closeDrawer(){drawer.classList.remove('is-open');drawer.setAttribute('aria-hidden','true');opener.setAttribute('aria-expanded','false');document.body.classList.remove('drawer-open');opener.focus();}
+  opener.addEventListener('click',openDrawer);
+  drawer.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeDrawer);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&drawer.classList.contains('is-open'))closeDrawer();});
 })();
 </script>
 </body>
