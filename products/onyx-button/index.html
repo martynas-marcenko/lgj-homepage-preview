@@ -251,7 +251,7 @@ body.drawer-open{overflow:hidden;}
   .pdp__strip{order:1;display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
     margin-right:calc(-1 * var(--pad));padding-right:var(--pad);}
   .pdp__strip::-webkit-scrollbar{display:none;}
-  .pdp__strip img{flex:0 0 calc((100vw - var(--pad) - 8px) / 1.5);aspect-ratio:3/4;object-fit:cover;scroll-snap-align:start;}
+  .pdp__strip img{flex:0 0 calc((100vw - var(--pad) - 8px) / 1.5);min-width:0;max-width:none;height:auto;align-self:flex-start;aspect-ratio:3/4;object-fit:cover;scroll-snap-align:start;}   /* min-width:0 — else flex min-size lets each image grow to full width */
   /* thumbs: small row under the slider (as before) */
   .pdp__thumbs{order:2;flex-direction:row;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:10px;}
   .pdp__thumbs::-webkit-scrollbar{display:none;}
