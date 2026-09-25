@@ -242,13 +242,14 @@ body.drawer-open{overflow:hidden;}
 
 /* ─────────────────────────── RESPONSIVE (product page) ─────────────────── */
 @media (max-width:809.98px){
-  .pdp{padding:0;}
-  .pdp__inner{grid-template-columns:1fr;gap:0;}
-  .pdp__stage{order:1;}
-  .pdp__thumbs{order:2;flex-direction:row;gap:8px;overflow-x:auto;padding:10px var(--pad) 0;}
-  .pdp__thumb{flex:0 0 60px;}
-  .pdp__buy{order:3;}
-  .pdp__buy{position:static;padding:28px var(--pad) 0;}
+  .pdp{padding:0 var(--pad);}
+  .pdp__inner{grid-template-columns:52px minmax(0,1fr);gap:0 8px;}
+  /* thumbs: column beside the image, capped at the image height (height:0 + min-height:100% of the
+     grid row), scrolls vertically when there are more than fit */
+  .pdp__thumbs{align-self:stretch;height:0;min-height:100%;overflow-y:auto;gap:8px;scrollbar-width:none;}
+  .pdp__thumbs::-webkit-scrollbar{display:none;}
+  .pdp__thumb{width:52px;flex:0 0 auto;}
+  .pdp__buy{grid-column:1 / -1;position:static;padding:28px 0 0;}
   .drawer__head{padding:20px var(--pad);}
   .drawer__body{padding:4px var(--pad) 32px;}
   .grid--related{padding-top:90px;}
