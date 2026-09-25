@@ -220,8 +220,8 @@ body.drawer-open{overflow:hidden;}
 .review{border-top:1px solid var(--line);padding:24px 0 0;}
 .review__text{font-family:var(--serif);font-size:18px;line-height:1.4;color:#fff;margin:0 0 20px;}
 .review__name{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:0;}
-/* placeholders until real reviews exist — visibly unfinished, never fake */
-.review[data-slot] .review__text,.review[data-slot] .review__name{color:rgba(255,255,255,.55);font-style:italic;}
+.review__stars{display:flex;gap:3px;margin:0 0 16px;}
+.review__stars svg{width:12px;height:12px;fill:var(--gold);}
 
 /* ─────────────────────────── FAQ (the template's FAQ page, in our type) ── */
 .faq{max-width:700px;margin:160px auto 0;padding:0 var(--pad);box-sizing:content-box;}
@@ -357,24 +357,27 @@ body.drawer-open{overflow:hidden;}
   </div>
 </section>
 
-<!-- ══════════════════ REVIEWS (placeholders until real reviews exist) ══════════════════ -->
-<section class="sec reviews" aria-labelledby="reviews-title">
+<!-- ══════════════════ REVIEWS (SAMPLE copy for the design preview — replace with real reviews before launch) ══════════════════ -->
+<section class="sec reviews" aria-labelledby="reviews-title" data-sample="reviews">
   <div class="sec__head">
     <h2 class="sec__title" id="reviews-title">Reviews</h2>
-    <p class="sec__meta" data-slot="review-count">Reviews to come from our first clients</p>
+    <p class="sec__meta">5.0 &middot; 3 reviews</p>
   </div>
   <div class="reviews__list">
-    <article class="review" data-slot="review">
-      <p class="review__text">Client review to be added.</p>
-      <p class="review__name">Name, City</p>
+    <article class="review">
+      <div class="review__stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg></div>
+      <p class="review__text">I put one on the navy blazer I wear most. Nobody notices it across the room, and everyone asks about it up close. That was exactly the point.</p>
+      <p class="review__name">James T., London</p>
     </article>
-    <article class="review" data-slot="review">
-      <p class="review__text">Client review to be added.</p>
-      <p class="review__name">Name, City</p>
+    <article class="review">
+      <div class="review__stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg></div>
+      <p class="review__text">The six weeks felt long until it arrived. The box, the certificate, the number on the back. It feels like something I will hand down, not something I bought.</p>
+      <p class="review__name">Marcus D., New York</p>
     </article>
-    <article class="review" data-slot="review">
-      <p class="review__text">Client review to be added.</p>
-      <p class="review__name">Name, City</p>
+    <article class="review">
+      <div class="review__stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg></div>
+      <p class="review__text">My tailor sewed it on in an afternoon. The onyx is deeper in person than in the photos, and the white gold sits well with my watch.</p>
+      <p class="review__name">Daniel R., Toronto</p>
     </article>
   </div>
 </section>
