@@ -223,11 +223,20 @@ body.drawer-open{overflow:hidden;}
 /* placeholders until real reviews exist — visibly unfinished, never fake */
 .review[data-slot] .review__text,.review[data-slot] .review__name{color:rgba(255,255,255,.55);font-style:italic;}
 
-/* ─────────────────────────── FAQ ────────────────────────────────────── */
-.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:40px;align-items:start;}
-.faq__list{border-top:1px solid var(--line);}
-.faq .pdp__acc summary{height:auto;min-height:56px;padding:16px 0;font-size:15px;line-height:1.35;gap:20px;}
-.faq .pdp__acc p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.85);max-width:60ch;margin:0 0 18px;}
+/* ─────────────────────────── FAQ (the template's FAQ page, in our type) ── */
+.faq{max-width:700px;margin:160px auto 0;padding:0 var(--pad);box-sizing:content-box;}
+.faq__title{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.05;letter-spacing:-.01em;color:#fff;margin:0 0 85px;}
+.faq__group{margin-bottom:87px;}
+.faq__group:last-child{margin-bottom:0;}
+.faq__label{font-size:12px;font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:0 0 20px;}
+.faq__item{border-bottom:1px solid var(--line);}
+.faq__item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:57px;padding:12px 0;cursor:pointer;
+  font-size:20px;font-weight:500;line-height:1.1;letter-spacing:-.04em;color:#fff;}
+.faq__item summary::-webkit-details-marker{display:none;}
+.faq__item summary::after{content:"";width:15px;height:15px;flex:0 0 15px;margin-right:2px;
+  background:linear-gradient(#fff,#fff) center/15px 1px no-repeat,linear-gradient(#fff,#fff) center/1px 15px no-repeat;}
+.faq__item[open] summary::after{background:linear-gradient(#fff,#fff) center/15px 1px no-repeat;}
+.faq__item p{max-width:490px;font-size:16px;font-weight:500;line-height:1.45;letter-spacing:-.03em;color:rgba(255,255,255,.85);margin:6px 0 22px;}
 
 /* ─────────────────────────── YOU MAY ALSO LIKE (homepage card grid) ───── */
 .grid--related{padding-top:160px;}
@@ -246,7 +255,11 @@ body.drawer-open{overflow:hidden;}
   .sec{margin-top:90px;}
   .reviews__list{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
   .review{flex:0 0 85%;scroll-snap-align:start;}
-  .faq{grid-template-columns:1fr;gap:20px;}
+  .faq{margin-top:90px;}
+  .faq__title{margin-bottom:50px;}
+  .faq__group{margin-bottom:56px;}
+  .faq__item summary{font-size:18px;}
+  .faq__item p{font-size:15px;}
 }
 </style>
 </head>
@@ -367,30 +380,40 @@ body.drawer-open{overflow:hidden;}
 </section>
 
 <!-- ══════════════════ FAQ ══════════════════ -->
-<section class="sec faq" aria-labelledby="faq-title">
-  <h2 class="sec__title" id="faq-title">Questions</h2>
-  <div class="faq__list">
-    <details class="pdp__acc">
+<section class="faq" aria-labelledby="faq-title">
+  <h2 class="faq__title" id="faq-title">Frequently Asked Questions</h2>
+
+  <div class="faq__group">
+    <p class="faq__label">The piece</p>
+    <details class="faq__item">
       <summary>Is it solid gold or plated?</summary>
       <p>Solid 18K gold (750), never plated. The back carries the hallmark 750 LGJ 18K.</p>
     </details>
-    <details class="pdp__acc">
-      <summary>How do I know it is authentic?</summary>
-      <p>Every piece is hallmarked and individually numbered. It is presented in an LGJ box with its Certificate of Authenticity.</p>
-    </details>
-    <details class="pdp__acc">
-      <summary>Why does it take 4&ndash;6 weeks?</summary>
-      <p>Every piece is made to order. Nothing sits in stock. Yours is crafted to order in 4&ndash;6 weeks.</p>
-    </details>
-    <details class="pdp__acc">
-      <summary>Which gold should I choose?</summary>
-      <p>The Onyx Button is made in White, Yellow or Rose gold. Most clients match it to the metal they already wear, such as a watch or cufflinks.</p>
-    </details>
-    <details class="pdp__acc">
+    <details class="faq__item">
       <summary>Is the stone natural?</summary>
       <p>Yes. Natural black onyx, cut as a domed cabochon and set flush in the gold rim.</p>
     </details>
-    <details class="pdp__acc">
+    <details class="faq__item">
+      <summary>Which gold should I choose?</summary>
+      <p>The Onyx Button is made in White, Yellow or Rose gold. Most clients match it to the metal they already wear, such as a watch or cufflinks.</p>
+    </details>
+  </div>
+
+  <div class="faq__group">
+    <p class="faq__label">Authenticity</p>
+    <details class="faq__item">
+      <summary>How do I know it is authentic?</summary>
+      <p>Every piece is hallmarked and individually numbered. It is presented in an LGJ box with its Certificate of Authenticity.</p>
+    </details>
+  </div>
+
+  <div class="faq__group">
+    <p class="faq__label">Ordering</p>
+    <details class="faq__item">
+      <summary>Why does it take 4&ndash;6 weeks?</summary>
+      <p>Every piece is made to order. Nothing sits in stock. Yours is crafted to order in 4&ndash;6 weeks.</p>
+    </details>
+    <details class="faq__item">
       <summary>How is it attached to my garment?</summary>
       <p>It has a sewing shank on the back and is sewn on like any shank button. Your tailor can fit it to a jacket you already own.</p>
     </details>
