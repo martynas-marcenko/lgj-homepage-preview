@@ -152,7 +152,6 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .pdp__thumb img{width:100%;height:100%;object-fit:cover;}
 .pdp__stage{position:relative;aspect-ratio:3/4;background:var(--dark);overflow:hidden;}
 .pdp__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.pdp__strip{display:none;}   /* mobile gallery */
 
 .pdp__buy{position:sticky;top:40px;}
 .pdp__title{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.05;letter-spacing:-.01em;color:#fff;margin:0 0 12px;}
@@ -245,9 +244,10 @@ body.drawer-open{overflow:hidden;}
 @media (max-width:809.98px){
   .pdp{padding:0;}
   .pdp__inner{grid-template-columns:1fr;gap:0;}
-  .pdp__thumbs,.pdp__stage{display:none;}
-  .pdp__strip{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 8px;}
-  .pdp__strip img{flex:0 0 88%;aspect-ratio:3/4;object-fit:cover;scroll-snap-align:center;}
+  .pdp__stage{order:1;}
+  .pdp__thumbs{order:2;flex-direction:row;gap:8px;overflow-x:auto;padding:10px var(--pad) 0;}
+  .pdp__thumb{flex:0 0 60px;}
+  .pdp__buy{order:3;}
   .pdp__buy{position:static;padding:28px var(--pad) 0;}
   .drawer__head{padding:20px var(--pad);}
   .drawer__body{padding:4px var(--pad) 32px;}
@@ -305,12 +305,6 @@ body.drawer-open{overflow:hidden;}
       <button class="pdp__thumb" type="button" data-src="../../product-refs/onyx-button/img/back-800.jpg" data-alt="Onyx Button, back with the 750 LGJ 18K hallmark"><img src="../../product-refs/onyx-button/img/back-800.jpg" alt=""></button>
     </div>
     <div class="pdp__stage"><img id="pdp-main" src="../../img/sig-onyx.jpg" alt="Onyx Button in 18K white gold, front and back"></div>
-    <div class="pdp__strip">
-      <img src="../../img/sig-onyx.jpg" alt="Onyx Button in 18K white gold, front and back">
-      <img src="../../img/jacket-worn.jpg" alt="Onyx Button worn on a black jacket" loading="lazy">
-      <img src="../../product-refs/onyx-button/img/angle-800.jpg" alt="Onyx Button, angled view" loading="lazy">
-      <img src="../../product-refs/onyx-button/img/back-800.jpg" alt="Onyx Button, back with the 750 LGJ 18K hallmark" loading="lazy">
-    </div>
 
     <div class="pdp__buy">
       <h1 class="pdp__title">Onyx Button</h1>
