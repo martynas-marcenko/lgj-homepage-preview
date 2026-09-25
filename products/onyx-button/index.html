@@ -152,6 +152,7 @@ button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer
 .pdp__thumb img{width:100%;height:100%;object-fit:cover;}
 .pdp__stage{position:relative;aspect-ratio:3/4;background:var(--dark);overflow:hidden;}
 .pdp__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.pdp__strip{display:none;}   /* mobile main-image slider */
 
 .pdp__buy{position:sticky;top:40px;}
 .pdp__title{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.05;letter-spacing:-.01em;color:#fff;margin:0 0 12px;}
@@ -245,11 +246,16 @@ body.drawer-open{overflow:hidden;}
 @media (max-width:809.98px){
   .pdp{padding:0 var(--pad);}
   .pdp__inner{grid-template-columns:minmax(0,1fr);gap:0;}
-  .pdp__stage{order:1;}
-  /* thumbs: a slider under the main image, 2.5 images per viewport */
-  .pdp__thumbs{order:2;flex-direction:row;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-top:8px;}
+  .pdp__stage{display:none;}
+  /* main image: a slider, 1.5 images per viewport, running to the right screen edge */
+  .pdp__strip{order:1;display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    margin-right:calc(-1 * var(--pad));padding-right:var(--pad);}
+  .pdp__strip::-webkit-scrollbar{display:none;}
+  .pdp__strip img{flex:0 0 calc((100vw - var(--pad) - 8px) / 1.5);aspect-ratio:3/4;object-fit:cover;scroll-snap-align:start;}
+  /* thumbs: small row under the slider (as before) */
+  .pdp__thumbs{order:2;flex-direction:row;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:10px;}
   .pdp__thumbs::-webkit-scrollbar{display:none;}
-  .pdp__thumb{flex:0 0 calc((100% - 16px) / 2.5);width:auto;aspect-ratio:3/4;scroll-snap-align:start;}
+  .pdp__thumb{flex:0 0 60px;}
   .pdp__buy{order:3;position:static;padding:28px 0 0;}
   .drawer__head{padding:20px var(--pad);}
   .drawer__body{padding:4px var(--pad) 32px;}
@@ -305,6 +311,12 @@ body.drawer-open{overflow:hidden;}
       <button class="pdp__thumb" type="button" data-src="../../img/jacket-worn.jpg" data-alt="Onyx Button worn on a black jacket"><img src="../../img/jacket-worn.jpg" alt=""></button>
       <button class="pdp__thumb" type="button" data-src="../../product-refs/onyx-button/img/angle-800.jpg" data-alt="Onyx Button, angled view"><img src="../../product-refs/onyx-button/img/angle-800.jpg" alt=""></button>
       <button class="pdp__thumb" type="button" data-src="../../product-refs/onyx-button/img/back-800.jpg" data-alt="Onyx Button, back with the 750 LGJ 18K hallmark"><img src="../../product-refs/onyx-button/img/back-800.jpg" alt=""></button>
+    </div>
+    <div class="pdp__strip">
+      <img src="../../img/sig-onyx.jpg" alt="Onyx Button in 18K white gold, front and back">
+      <img src="../../img/jacket-worn.jpg" alt="Onyx Button worn on a black jacket" loading="lazy">
+      <img src="../../product-refs/onyx-button/img/angle-800.jpg" alt="Onyx Button, angled view" loading="lazy">
+      <img src="../../product-refs/onyx-button/img/back-800.jpg" alt="Onyx Button, back with the 750 LGJ 18K hallmark" loading="lazy">
     </div>
     <div class="pdp__stage"><img id="pdp-main" src="../../img/sig-onyx.jpg" alt="Onyx Button in 18K white gold, front and back"></div>
 
@@ -511,11 +523,16 @@ body.drawer-open{overflow:hidden;}
   // gallery: thumbnail swaps the main image
   var main=document.getElementById('pdp-main');
   var thumbs=document.querySelectorAll('.pdp__thumb');
-  thumbs.forEach(function(t){t.addEventListener('click',function(){
-    main.src=t.dataset.src;main.alt=t.dataset.alt;
-    thumbs.forEach(function(o){o.removeAttribute('aria-current');});
-    t.setAttribute('aria-current','true');
+  var strip=document.querySelector('.pdp__strip');
+  function mark(i){thumbs.forEach(function(o,j){if(i===j)o.setAttribute('aria-current','true');else o.removeAttribute('aria-current');});}
+  thumbs.forEach(function(t,i){t.addEventListener('click',function(){
+    main.src=t.dataset.src;main.alt=t.dataset.alt;mark(i);
+    if(getComputedStyle(strip).display!=='none'){var im=strip.children[i];strip.scrollTo({left:im.offsetLeft-strip.firstElementChild.offsetLeft,behavior:'smooth'});}
   });});
+  strip.addEventListener('scroll',function(){
+    var w=strip.firstElementChild.getBoundingClientRect().width+8;
+    mark(Math.min(thumbs.length-1,Math.round(strip.scrollLeft/w)));
+  },{passive:true});
   // gold colour
   var label=document.getElementById('pdp-gold');
   var sw=document.querySelectorAll('.pdp__swatch');
