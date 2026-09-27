@@ -365,7 +365,7 @@ body.drawer-open{overflow:hidden;}
         <summary>Material &amp; Details</summary>
         <dl>
           <dt>Material</dt><dd>18K gold (750), in White, Yellow or Rose</dd>
-          <dt>Dimensions</dt><dd>Front &#216;20 mm &middot; Sleeve &#216;15 mm</dd>
+          <dt>Dimensions</dt><dd id="pdp-dim">Front &middot; &#216;20 mm</dd>
           <dt>Stone</dt><dd>Natural black onyx, domed cabochon, set flush in the rim</dd>
           <dt>Construction</dt><dd>Sewing shank on the back</dd>
           <dt>Hallmark</dt><dd>750 LGJ 18K, on the back</dd>
@@ -558,6 +558,7 @@ body.drawer-open{overflow:hidden;}
       o.setAttribute('aria-checked','true');
       document.getElementById('pdp-'+g.dataset.opt).innerHTML=o.dataset.value;
       if(g.dataset.opt==='gold')document.getElementById('pdp-material').innerHTML='18K &middot; '+o.dataset.value;
+      if(g.dataset.opt==='size')document.getElementById('pdp-dim').innerHTML=o.dataset.value;
     });});
   });
   // quantity
