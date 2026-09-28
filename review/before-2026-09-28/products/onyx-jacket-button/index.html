@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onyx Jacket Button | Luxury Garment Jewelry</title>
+<meta name="description" content="Onyx Jacket Button in 18K white gold. A domed natural black onyx cabochon set flush in a smooth gold rim. Made to order, hallmarked 750 and individually numbered.">
+
+<!-- Headings: Baskervville. Body/UI: system sans (same as the homepage). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════
+   LGJ — Luxury Garment Jewelry · product page (clean rebuild)
+   Hand-written HTML + CSS. No build, no framework, no Framer.
+   Header, footer, tokens and the product card are the homepage's own.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --ink:#0B0B0B;          /* near-black ground */
+  --dark:#121212;         /* section dark (product grid) */
+  --paper:#FAFAFA;        /* near-white */
+  --gold:#D6C19D;         /* champagne gold — accent only */
+  --line:rgba(255,255,255,.14);
+  --muted:rgba(255,255,255,.55);
+  --serif:"Baskervville",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --container:1360px;
+  --pad:40px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip;}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;margin:0;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+.wrap{max-width:var(--container);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+
+/* ─────────────────────────── NAV (fixed, transparent) ─────────────────── */
+.nav{position:absolute;top:0;left:0;right:0;z-index:50;padding:22px var(--pad) 20px;}
+.nav__inner{position:relative;max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav__group{display:flex;align-items:center;gap:24px;}
+.nav__group--center{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;gap:0;pointer-events:none;}
+.nav__side{flex:1;display:flex;align-items:center;gap:28px;}
+.nav__side--dark{justify-content:flex-end;padding-right:14px;}
+.nav__side--light{justify-content:flex-start;padding-left:14px;}
+.nav__side .nav__link{pointer-events:auto;}
+.nav__side--light .nav__link{color:var(--ink);}
+.nav__group--right{gap:20px;}
+.nav__group--right .nav__desk,.nav__group--right .nav__bag{color:var(--ink);}   /* over the light (woman) half */
+.nav a,.nav button{color:#fff;font-size:14px;font-weight:500;letter-spacing:-.02em;line-height:1;}
+.nav a{opacity:.9;transition:opacity .25s;}
+.nav a:hover{opacity:1;}
+.nav__logo{position:relative;flex:0 0 auto;color:#fff;text-decoration:none;}
+.nav__logo-mark{display:block;font-family:var(--serif);font-weight:500;font-size:52px;letter-spacing:.03em;line-height:1;}
+.nav__logo-sub{position:absolute;top:calc(100% + 6px);left:2px;white-space:nowrap;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+.nav__menu{display:none;}                 /* mobile only */
+.nav__divider{display:none;color:rgba(255,255,255,.4);}
+
+/* ─────────────────────────── PRODUCT GRID (Signature / New) ───────────── */
+.grid{background:var(--ink);padding:100px 0 50px;}
+.grid .wrap{max-width:none;}     /* cards fill the full width, like the original */
+.grid__head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:25px;}
+.grid__tabs{display:flex;align-items:baseline;gap:20px;}
+.grid__tab{font-family:var(--serif);font-size:30px;font-weight:500;color:#fff;letter-spacing:-.01em;}
+.grid__tab[aria-selected="false"]{color:rgba(255,255,255,.4);}
+.grid__all{font-size:14px;color:#fff;opacity:.85;display:inline-flex;align-items:center;gap:10px;}
+.grid__all svg{width:26px;height:8px;transition:transform .3s ease;}
+.grid__all:hover svg{transform:translateX(5px);}
+.grid__cards{display:flex;gap:15px;}
+.card{flex:1 1 0;min-width:0;}
+.card__media{position:relative;aspect-ratio:3/4;background:#fff;overflow:hidden;}
+.card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.card__media .card__worn{display:none;}   /* hover swap disabled for now */
+.card:hover .card__worn{opacity:1;}
+.card__tag{position:absolute;top:16px;left:16px;font-size:13px;color:#fff;z-index:2;}
+.card__fav{display:none;}   /* favorite heart removed */
+.card__fav svg{width:22px;height:22px;display:block;}
+.card__title{margin:16px 0 4px;font-size:15px;color:#fff;}
+.card__meta{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+
+/* ─────────────────────────── FOOTER ───────────────────────────────────── */
+.footer{background:var(--ink);border-top:1px solid var(--line);}
+.footer__top{max-width:var(--container);margin:0 auto;padding:56px var(--pad) 40px;display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px;}
+.footer__brand-name{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.06em;color:#fff;}
+.footer__brand-tag{margin:12px 0 22px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+.footer__social{display:flex;gap:16px;}
+.footer__social a{color:#fff;opacity:.85;}
+.footer__social svg{width:20px;height:20px;display:block;}
+.footer__col h4{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 16px;}
+.footer__col ul{list-style:none;margin:0;padding:0;}
+.footer__col li{margin-bottom:12px;}
+.footer__col a{font-size:15px;color:#fff;opacity:.9;}
+.footer__col a:hover{opacity:1;}
+.footer__bottom{max-width:var(--container);margin:0 auto;padding:20px var(--pad) 40px;display:flex;align-items:center;justify-content:space-between;}
+.footer__copy{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.footer__pay{display:flex;gap:8px;}
+.footer__pay span{font-size:9px;font-weight:700;letter-spacing:.02em;color:#111;background:#e9e9e9;border-radius:3px;padding:5px 6px;line-height:1;}
+
+/* ─────────────────────────── RESPONSIVE (homepage rules for nav, card grid, footer) ── */
+@media (max-width:809.98px){
+  :root{--pad:20px;}
+  /* mobile: nav is a solid top bar (not overlaying the hero); the split images sit below it */
+  .nav{position:relative;background:var(--ink);padding:16px var(--pad);}
+  .nav__logo{text-align:center;}
+  .nav__logo-mark{font-size:30px;}
+  .nav__logo-sub{position:static;display:block;margin-top:4px;font-size:10px;letter-spacing:.16em;text-align:center;color:rgba(255,255,255,.85);}
+  /* everything sits on the dark bar now → all white */
+  .nav__group--right .nav__bag,.nav__divider{color:#fff;}
+  /* nav collapses: Menu · LGJ · Bag (0) */
+  .nav__group .nav__link,.nav__group--right .nav__desk{display:none;}
+  .nav__menu{display:inline;}
+  .nav__divider{display:none;}
+  .grid{padding-top:0;padding-bottom:25px;}   /* drop the 100px gap under the hero on mobile; 25px bottom */
+  .grid__cards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .card{flex:0 0 72%;scroll-snap-align:start;}
+  .grid__tab{font-size:24px;}
+  .grid__tabs{gap:10px;}   /* half the gap between Signature / New */
+  .grid__head{margin-bottom:12px;}   /* tighten the gap under the Signature/New row */
+  .footer__top{grid-template-columns:1fr 1fr;gap:28px;}
+  .footer__brand{grid-column:1 / -1;}
+  .footer__bottom{flex-direction:column;gap:16px;align-items:flex-start;}
+}
+
+/* Product page: no hero under the nav, so the nav sits in flow on the dark
+   ground and every link is white (the homepage colours some links ink for
+   its light hero half). */
+.page-pdp .nav{position:relative;}
+.page-pdp .nav__side--light .nav__link,
+.page-pdp .nav__group--right .nav__desk,
+.page-pdp .nav__group--right .nav__bag{color:#fff;}
+
+/* ─────────────────────────── PRODUCT (gallery + buy box) ──────────────── */
+.pdp{padding:88px var(--pad) 0;}
+.pdp__inner{display:grid;grid-template-columns:60px minmax(0,430px) minmax(0,430px);gap:40px;justify-content:center;align-items:start;}
+.pdp__thumbs{display:flex;flex-direction:column;gap:10px;}
+.pdp__thumb{display:block;width:60px;aspect-ratio:4/5;padding:0;overflow:hidden;opacity:.55;transition:opacity .25s;}
+.pdp__thumb[aria-current="true"],.pdp__thumb:hover{opacity:1;}
+.pdp__thumb img{width:100%;height:100%;object-fit:cover;}
+.pdp__stage{position:relative;aspect-ratio:3/4;background:var(--dark);overflow:hidden;}
+.pdp__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.pdp__strip{display:none;}   /* mobile main-image slider */
+
+.pdp__buy{position:sticky;top:40px;}
+.pdp__title{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.05;letter-spacing:-.01em;color:#fff;margin:0 0 10px;}
+.pdp__material{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:0 0 16px;}
+.pdp__price{font-size:14px;font-weight:500;line-height:1;color:#fff;margin:0;}
+.pdp__per{font-weight:400;color:rgba(255,255,255,.72);}
+.pdp__rule{height:1px;background:var(--line);margin:26px 0;}
+.pdp__desc{font-size:14px;line-height:1.3;letter-spacing:-.01em;color:rgba(255,255,255,.85);margin:0 0 12px;}
+
+.pdp__opt{margin:0 0 23px;}
+.pdp__opt-label{font-size:12px;font-weight:500;color:rgba(255,255,255,.72);margin:0 0 10px;}
+.pdp__opt-label b{font-weight:500;color:#fff;}
+.pdp__choices{display:flex;flex-wrap:wrap;gap:8px;}
+.pdp__choice{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.85);
+  box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s,color .2s;}
+.pdp__choice:hover{color:#fff;}
+.pdp__choice[aria-checked="true"]{color:#fff;box-shadow:inset 0 0 0 1px #fff;}
+.pdp__dot{width:14px;height:14px;border-radius:50%;flex:0 0 14px;}
+.pdp__dot--white{background:linear-gradient(135deg,#f4f4f2 0%,#c9c9c6 48%,#eeeeec 62%,#a9a9a5 100%);}
+.pdp__dot--yellow{background:linear-gradient(135deg,#f3e2b0 0%,#c9a24e 48%,#ecd48f 62%,#a8812f 100%);}
+.pdp__dot--rose{background:linear-gradient(135deg,#f5d3c3 0%,#c98a6f 48%,#efc0aa 62%,#a8674e 100%);}
+
+.pdp__cart{display:flex;gap:10px;height:40px;margin-bottom:17px;}
+.pdp__qty{flex:0 0 108px;display:flex;align-items:center;justify-content:space-between;box-shadow:inset 0 0 0 1px var(--line);padding:0 6px;}
+.pdp__qty button{width:28px;height:28px;font-size:16px;line-height:1;color:rgba(255,255,255,.72);}
+.pdp__qty button:hover{color:#fff;}
+.pdp__qty output{font-size:14px;color:#fff;}
+.pdp__add{flex:1;background:var(--paper);color:var(--ink);font-size:14px;font-weight:500;}
+.pdp__add:hover{background:#fff;}
+.pdp__status{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.85);margin:0 0 6px;}
+.pdp__status + .pdp__opt{margin-top:23px;}
+.pdp__status::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);}
+
+.pdp__acc{border-bottom:1px solid var(--line);}
+.pdp__acc summary{list-style:none;display:flex;align-items:center;justify-content:space-between;height:44px;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:-.01em;color:#fff;}
+.pdp__acc summary::-webkit-details-marker{display:none;}
+.pdp__acc summary::after{content:"";width:13px;height:13px;flex:0 0 13px;margin-right:3px;
+  background:linear-gradient(#fff,#fff) center/13px 1px no-repeat,linear-gradient(#fff,#fff) center/1px 13px no-repeat;}
+.pdp__acc[open] summary::after{background:linear-gradient(#fff,#fff) center/13px 1px no-repeat;}
+.pdp__acc dl{margin:0;padding:0 0 14px;}
+.pdp__acc dt{font-size:12px;font-weight:500;color:rgba(255,255,255,.72);margin:0;}
+.pdp__acc dd{font-size:12px;font-weight:500;color:#fff;margin:4px 0 9px;}
+.pdp__acc p{font-size:12px;line-height:1.5;color:#fff;margin:0 0 9px;}
+.pdp__acc p:last-child{margin-bottom:14px;}
+.pdp__ship{display:inline-block;margin-top:26px;padding:0 0 3px;font-size:12px;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.pdp__ship:hover{color:#fff;}
+
+/* ─────────────────────────── DRAWER (Shipping, Exchange and Returns) ─── */
+.drawer{position:fixed;inset:0;z-index:100;visibility:hidden;transition:visibility 0s linear .4s;}
+.drawer.is-open{visibility:visible;transition:none;}
+.drawer__scrim{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .4s ease;}
+.drawer.is-open .drawer__scrim{opacity:1;}
+.drawer__panel{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--ink);box-shadow:-1px 0 0 var(--line);
+  display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);}
+.drawer.is-open .drawer__panel{transform:none;}
+.drawer__panel:focus{outline:none;}
+.drawer__head{display:flex;align-items:center;justify-content:space-between;padding:24px 30px;border-bottom:1px solid var(--line);}
+.drawer__title{font-family:var(--serif);font-size:12px;font-weight:500;color:#fff;margin:0;}
+.drawer__close{width:32px;height:32px;display:grid;place-items:center;margin-right:-6px;color:#fff;}
+.drawer__close svg{width:16px;height:16px;}
+.drawer__body{flex:1;overflow-y:auto;padding:8px 30px 40px;}
+.drawer__body h3{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:28px 0 10px;}
+.drawer__body p{font-size:14px;line-height:1.5;color:#fff;margin:0 0 8px;}
+body.drawer-open{overflow:hidden;}
+
+/* ─────────────────────────── REVIEWS ───────────────────────────────── */
+.sec{max-width:1000px;margin:160px auto 0;padding:0 var(--pad);box-sizing:content-box;}
+.sec__head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:25px;}
+.sec__title{font-family:var(--serif);font-size:30px;font-weight:500;letter-spacing:-.01em;color:#fff;margin:0;}
+.sec__meta{font-size:14px;color:rgba(255,255,255,.72);margin:0;}
+.reviews__list{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
+.review{border-top:1px solid var(--line);padding:24px 0 0;}
+.review__text{font-family:var(--serif);font-size:18px;line-height:1.4;color:#fff;margin:0 0 20px;}
+.review__name{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:0;}
+.review__stars{display:flex;gap:3px;margin:0 0 16px;}
+.review__stars svg{width:12px;height:12px;fill:var(--gold);}
+
+/* ─────────────────────────── FAQ (the template's FAQ page, in our type) ── */
+.faq{max-width:700px;margin:160px auto 0;padding:0 var(--pad);box-sizing:content-box;}
+.faq__title{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.05;letter-spacing:-.01em;color:#fff;margin:0 0 85px;}
+.faq__group{margin-bottom:87px;}
+.faq__group:last-child{margin-bottom:0;}
+.faq__label{font-size:12px;font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:rgba(255,255,255,.72);margin:0 0 20px;}
+.faq__item{border-bottom:1px solid var(--line);}
+.faq__item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:57px;padding:12px 0;cursor:pointer;
+  font-size:20px;font-weight:500;line-height:1.1;letter-spacing:-.04em;color:#fff;}
+.faq__item summary::-webkit-details-marker{display:none;}
+.faq__item summary::after{content:"";width:15px;height:15px;flex:0 0 15px;margin-right:2px;
+  background:linear-gradient(#fff,#fff) center/15px 1px no-repeat,linear-gradient(#fff,#fff) center/1px 15px no-repeat;}
+.faq__item[open] summary::after{background:linear-gradient(#fff,#fff) center/15px 1px no-repeat;}
+.faq__item p{max-width:490px;font-size:16px;font-weight:500;line-height:1.45;letter-spacing:-.03em;color:rgba(255,255,255,.85);margin:6px 0 22px;}
+
+/* ─────────────────────────── YOU MAY ALSO LIKE (homepage card grid) ───── */
+.grid--related{padding-top:160px;}
+
+/* ─────────────────────────── RESPONSIVE (product page) ─────────────────── */
+@media (max-width:809.98px){
+  .pdp{padding:0 var(--pad);}
+  .pdp__inner{grid-template-columns:minmax(0,1fr);gap:0;}
+  .pdp__stage{display:none;}
+  /* main image: a slider, 1.5 images per viewport, running to the right screen edge */
+  .pdp__strip{order:1;display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    margin-right:calc(-1 * var(--pad));padding-right:var(--pad);}
+  .pdp__strip::-webkit-scrollbar{display:none;}
+  .pdp__strip img{flex:0 0 calc((100vw - var(--pad) - 8px) / 1.5);min-width:0;max-width:none;height:auto;align-self:flex-start;aspect-ratio:3/4;object-fit:cover;scroll-snap-align:start;}   /* min-width:0 — else flex min-size lets each image grow to full width */
+  /* thumbs: small row under the slider (as before) */
+  .pdp__thumbs{display:none;}   /* hidden on mobile for now; restore: order:2;display:flex;flex-direction:row;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:10px; */
+  .pdp__thumbs::-webkit-scrollbar{display:none;}
+  .pdp__thumb{flex:0 0 60px;}
+  .pdp__buy{order:3;position:static;padding:28px 0 0;}
+  .drawer__head{padding:20px var(--pad);}
+  .drawer__body{padding:4px var(--pad) 32px;}
+  .grid--related{padding-top:90px;}
+  .sec{margin-top:90px;}
+  .reviews__list{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+  .review{flex:0 0 85%;scroll-snap-align:start;}
+  .faq{margin-top:90px;}
+  .faq__title{margin-bottom:50px;}
+  .faq__group{margin-bottom:28px;}
+  .faq__item summary{font-size:18px;}
+  .faq__item p{font-size:15px;}
+}
+</style>
+</head>
+
+<body class="page-pdp">
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<header class="nav">
+  <div class="nav__inner">
+    <button class="nav__menu" type="button" aria-label="Open menu">Menu</button>
+    <a class="nav__logo" href="../../" aria-label="LGJ — Luxury Garment Jewelry, home">
+      <span class="nav__logo-mark">LGJ</span>
+      <span class="nav__logo-sub">Luxury Garment Jewelry</span>
+    </a>
+    <nav class="nav__group nav__group--center" aria-label="Primary">
+      <span class="nav__side nav__side--dark">
+        <a class="nav__link" href="#">Shop</a>
+        <a class="nav__link" href="#">Pieces</a>
+        <a class="nav__link" href="#">Bespoke</a>
+      </span>
+      <span class="nav__side nav__side--light">
+        <a class="nav__link" href="#">The House</a>
+        <a class="nav__link" href="#">Craft</a>
+      </span>
+    </nav>
+    <div class="nav__group nav__group--right">
+      <a class="nav__desk" href="#">Favorites</a>
+      <a class="nav__desk" href="#">Search</a>
+      <span class="nav__divider" aria-hidden="true">|</span>
+      <a class="nav__bag" href="#">Bag (0)</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════ PRODUCT ══════════════════ -->
+<main>
+<section class="pdp">
+  <div class="pdp__inner">
+    <div class="pdp__thumbs" role="tablist" aria-label="Product images">
+      <button class="pdp__thumb" type="button" aria-current="true" data-src="/lgj-homepage-preview/img/sig-onyx.jpg" data-alt="Onyx Jacket Button in 18K white gold, front and back"><img src="/lgj-homepage-preview/img/sig-onyx.jpg" alt=""></button>
+      <button class="pdp__thumb" type="button" data-src="/lgj-homepage-preview/img/jacket-worn.jpg" data-alt="Onyx Jacket Button worn on a black jacket"><img src="/lgj-homepage-preview/img/jacket-worn.jpg" alt=""></button>
+      <button class="pdp__thumb" type="button" data-src="/lgj-homepage-preview/product-refs/onyx-button/img/angle-800.jpg" data-alt="Onyx Jacket Button, angled view"><img src="/lgj-homepage-preview/product-refs/onyx-button/img/angle-800.jpg" alt=""></button>
+      <button class="pdp__thumb" type="button" data-src="/lgj-homepage-preview/product-refs/onyx-button/img/back-800.jpg" data-alt="Onyx Jacket Button, back with the 750 LGJ 18K hallmark"><img src="/lgj-homepage-preview/product-refs/onyx-button/img/back-800.jpg" alt=""></button>
+    </div>
+    <div class="pdp__strip">
+      <img src="/lgj-homepage-preview/img/sig-onyx.jpg" alt="Onyx Jacket Button in 18K white gold, front and back">
+      <img src="/lgj-homepage-preview/img/jacket-worn.jpg" alt="Onyx Jacket Button worn on a black jacket" loading="lazy">
+      <img src="/lgj-homepage-preview/product-refs/onyx-button/img/angle-800.jpg" alt="Onyx Jacket Button, angled view" loading="lazy">
+      <img src="/lgj-homepage-preview/product-refs/onyx-button/img/back-800.jpg" alt="Onyx Jacket Button, back with the 750 LGJ 18K hallmark" loading="lazy">
+    </div>
+    <div class="pdp__stage"><img id="pdp-main" src="/lgj-homepage-preview/img/sig-onyx.jpg" alt="Onyx Jacket Button in 18K white gold, front and back"></div>
+
+    <div class="pdp__buy">
+      <h1 class="pdp__title">Onyx Jacket Button</h1>
+      <p class="pdp__material" id="pdp-material">18K &middot; White Gold</p>
+      <p class="pdp__price"><span data-slot="price" title="Placeholder estimate, confirm with client">$1,150</span> <span class="pdp__per">per button</span></p>
+      <div class="pdp__rule"></div>
+      <p class="pdp__desc">A domed natural black onyx cabochon, set flush in a smooth 18K gold rim, with a sewing shank on the back.</p>
+      <p class="pdp__status">Crafted to order in 4&ndash;6 weeks.</p>
+      <p class="pdp__status">Each piece is individually numbered.</p>
+
+      <div class="pdp__opt">
+        <p class="pdp__opt-label">Gold: <b id="pdp-gold">White Gold</b></p>
+        <div class="pdp__choices" role="radiogroup" aria-label="Gold" data-opt="gold">
+          <button class="pdp__choice" type="button" role="radio" aria-checked="true" data-value="White Gold"><i class="pdp__dot pdp__dot--white"></i>White Gold</button>
+          <button class="pdp__choice" type="button" role="radio" aria-checked="false" data-value="Yellow Gold"><i class="pdp__dot pdp__dot--yellow"></i>Yellow Gold</button>
+          <button class="pdp__choice" type="button" role="radio" aria-checked="false" data-value="Rose Gold"><i class="pdp__dot pdp__dot--rose"></i>Rose Gold</button>
+        </div>
+      </div>
+
+      <div class="pdp__opt">
+        <p class="pdp__opt-label">Size: <b id="pdp-size">Front &middot; &#216;20 mm</b></p>
+        <div class="pdp__choices" role="radiogroup" aria-label="Size" data-opt="size">
+          <button class="pdp__choice" type="button" role="radio" aria-checked="true" data-value="Front &middot; &#216;20 mm">Front &middot; &#216;20 mm</button>
+          <button class="pdp__choice" type="button" role="radio" aria-checked="false" data-value="Sleeve &middot; &#216;15 mm">Sleeve &middot; &#216;15 mm</button>
+        </div>
+      </div>
+
+      <div class="pdp__cart">
+        <div class="pdp__qty">
+          <button type="button" aria-label="Decrease quantity" data-step="-1">&minus;</button>
+          <output id="pdp-qty" aria-live="polite">1</output>
+          <button type="button" aria-label="Increase quantity" data-step="1">+</button>
+        </div>
+        <button class="pdp__add" type="button">Add to Bag</button>
+      </div>
+
+      <details class="pdp__acc">
+        <summary>Material &amp; Details</summary>
+        <dl>
+          <dt>Material</dt><dd>18K gold (750), in White, Yellow or Rose</dd>
+          <dt>Dimensions</dt><dd id="pdp-dim">Front &middot; &#216;20 mm</dd>
+          <dt>Stone</dt><dd>Natural black onyx, domed cabochon, set flush in the rim</dd>
+          <dt>Construction</dt><dd>Sewing shank on the back</dd>
+          <dt>Hallmark</dt><dd>750 LGJ 18K, on the back</dd>
+        </dl>
+      </details>
+      <details class="pdp__acc">
+        <summary>Made to Order</summary>
+        <p>Every piece is made to order. Nothing sits in stock.</p>
+        <p>Every piece is hallmarked and individually numbered.</p>
+        <p>Presented in an LGJ box with its Certificate of Authenticity.</p>
+      </details>
+      <button class="pdp__ship" type="button" aria-controls="ship-drawer" aria-expanded="false">Shipping, Exchange and Returns</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ REVIEWS (SAMPLE copy for the design preview — replace with real reviews before launch) ══════════════════ -->
+<section class="sec reviews" aria-labelledby="reviews-title" data-sample="reviews">
+  <div class="sec__head">
+    <h2 class="sec__title" id="reviews-title">Reviews</h2>
+    <p class="sec__meta">5.0 &middot; 3 reviews</p>
+  </div>
+  <div class="reviews__list">
+    <article class="review">
+      <div class="review__stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg></div>
+      <p class="review__text">I put one on the navy blazer I wear most. Nobody notices it across the room, and everyone asks about it up close. That was exactly the point.</p>
+      <p class="review__name">James T., London</p>
+    </article>
+    <article class="review">
+      <div class="review__stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg></div>
+      <p class="review__text">The six weeks felt long until it arrived. The box, the certificate, the number on the back. It feels like something I will hand down, not something I bought.</p>
+      <p class="review__name">Marcus D., New York</p>
+    </article>
+    <article class="review">
+      <div class="review__stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 .8l1.55 3.3 3.6.45-2.65 2.5.68 3.57L6 8.85 2.82 10.6l.68-3.57L.85 4.55l3.6-.45z"/></svg></div>
+      <p class="review__text">My tailor sewed it on in an afternoon. The onyx is deeper in person than in the photos, and the white gold sits well with my watch.</p>
+      <p class="review__name">Daniel R., Toronto</p>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section class="faq" aria-labelledby="faq-title">
+  <h2 class="faq__title" id="faq-title">Frequently Asked Questions</h2>
+
+  <div class="faq__group">
+    <p class="faq__label">The piece</p>
+    <details class="faq__item">
+      <summary>Is it solid gold or plated?</summary>
+      <p>Solid 18K gold (750), never plated. The back carries the hallmark 750 LGJ 18K.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Is the stone natural?</summary>
+      <p>Yes. Natural black onyx, cut as a domed cabochon and set flush in the gold rim.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Which gold should I choose?</summary>
+      <p>The Onyx Jacket Button is made in White, Yellow or Rose gold. Most clients match it to the metal they already wear, such as a watch or cufflinks.</p>
+    </details>
+  </div>
+
+  <div class="faq__group">
+    <p class="faq__label">Authenticity</p>
+    <details class="faq__item">
+      <summary>How do I know it is authentic?</summary>
+      <p>Every piece is hallmarked and individually numbered. It is presented in an LGJ box with its Certificate of Authenticity.</p>
+    </details>
+  </div>
+
+  <div class="faq__group">
+    <p class="faq__label">Ordering</p>
+    <details class="faq__item">
+      <summary>Why does it take 4&ndash;6 weeks?</summary>
+      <p>Every piece is made to order. Nothing sits in stock. Yours is crafted to order in 4&ndash;6 weeks.</p>
+    </details>
+    <details class="faq__item">
+      <summary>How is it attached to my garment?</summary>
+      <p>It has a sewing shank on the back and is sewn on like any shank button. Your tailor can fit it to a jacket you already own.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════════════ YOU MAY ALSO LIKE (homepage Signature card) ══════════════════ -->
+<section class="grid grid--related">
+  <div class="wrap">
+    <div class="grid__head">
+      <div class="grid__tabs">
+        <h2 class="grid__tab">You may also like</h2>
+      </div>
+      <a class="grid__all" href="../../">Discover the Collection<svg viewBox="0 0 26 8" fill="none" aria-hidden="true"><path d="M0 4h24M21 1l4 3-4 3" stroke="currentColor" stroke-width="1" stroke-linecap="square"/></svg></a>
+    </div>
+    <div class="grid__cards">
+      <a class="card" href="#">
+        <div class="card__media"><img src="/lgj-homepage-preview/img/sig-aglets.jpg" alt="Engraved Aglet in 18K white gold" loading="lazy"></div>
+        <p class="card__title">Engraved Aglet</p>
+        <p class="card__meta">18K · White Gold</p>
+      </a>
+      <a class="card" href="#">
+        <div class="card__media"><img src="/lgj-homepage-preview/img/sig-heritage.jpg" alt="American Heritage Jacket Button in 18K white gold" loading="lazy"></div>
+        <p class="card__title">American Heritage Jacket Button</p>
+        <p class="card__meta">18K · White Gold</p>
+      </a>
+      <a class="card" href="#">
+        <div class="card__media"><img src="/lgj-homepage-preview/img/sig-shirt.jpg" alt="Onyx Shirt Button in 18K white gold" loading="lazy"></div>
+        <p class="card__title">Onyx Shirt Button</p>
+        <p class="card__meta">18K · White Gold</p>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <div class="footer__brand-name">LGJ</div>
+      <p class="footer__brand-tag">Luxury Garment Jewelry</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7c-2.2 0-3.5 1.4-3.5 3 0 .9.4 1.7 1.1 2 .1 0 .2 0 .2-.2l.2-.7c0-.1 0-.2-.1-.3-.3-.3-.4-.7-.4-1.1 0-1.4 1-2.3 2.4-2.3 1.3 0 2 .8 2 1.9 0 1.4-.6 2.6-1.5 2.6-.5 0-.9-.4-.8-.9.1-.6.5-1.3.5-1.8 0-.4-.2-.8-.7-.8-.6 0-1 .6-1 1.4 0 .5.2.8.2.8l-.7 3c-.1.6 0 1.3 0 1.4 0 .1.1.1.2 0 .1-.1.8-1 1-1.6l.4-1.4c.2.4.8.7 1.4.7 1.8 0 3.1-1.7 3.1-3.9C15.7 8.5 14.2 7 12 7z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2 2 0 11-.02 4 2 2 0 01.02-4zM3 8.98h4V21H3zM9 8.98h3.8v1.64h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Shop</h4>
+      <ul><li><a href="#">All pieces</a></li><li><a href="#">Signature</a></li><li><a href="#">Bespoke</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>About</h4>
+      <ul><li><a href="#">LGJ</a></li><li><a href="#">The Certificate</a></li><li><a href="#">Bespoke commissions</a></li><li><a href="#">Details in gold</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>Other</h4>
+      <ul><li><a href="#">FAQs</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div class="footer__col">
+      <h4>Legal</h4>
+      <ul><li><a href="#">Terms of Service</a></li><li><a href="#">Return Policy</a></li><li><a href="#">Privacy Policy</a></li></ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copy">©2026 Luxury Garment Jewelry</p>
+    <div class="footer__pay">
+      <span>VISA</span><span>MC</span><span>AMEX</span><span>PAYPAL</span><span>APPLE&nbsp;PAY</span><span>G&nbsp;PAY</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════ DRAWER — Shipping, Exchange and Returns ══════════════════ -->
+<div class="drawer" id="ship-drawer" aria-hidden="true">
+  <div class="drawer__scrim" data-close></div>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="ship-drawer-title" tabindex="-1">
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="ship-drawer-title">Shipping, Exchange and Returns</h2>
+      <button class="drawer__close" type="button" aria-label="Close" data-close><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 2l12 12M14 2 2 14"/></svg></button>
+    </div>
+    <div class="drawer__body">
+      <h3>Made to order</h3>
+      <p>Every piece is made to order. Nothing sits in stock.</p>
+      <p>Crafted to order in 4&ndash;6 weeks.</p>
+      <h3>Delivery</h3>
+      <p>Presented in an LGJ box with its Certificate of Authenticity.</p>
+      <p data-slot="shipping">Shipping regions and costs to be confirmed.</p>
+      <h3>Exchange and returns</h3>
+      <p data-slot="returns">Exchange and returns policy to be confirmed.</p>
+    </div>
+  </aside>
+</div>
+
+<script>
+(function(){
+  // gallery: thumbnail swaps the main image
+  var main=document.getElementById('pdp-main');
+  var thumbs=document.querySelectorAll('.pdp__thumb');
+  var strip=document.querySelector('.pdp__strip');
+  function mark(i){thumbs.forEach(function(o,j){if(i===j)o.setAttribute('aria-current','true');else o.removeAttribute('aria-current');});}
+  thumbs.forEach(function(t,i){t.addEventListener('click',function(){
+    main.src=t.dataset.src;main.alt=t.dataset.alt;mark(i);
+    if(getComputedStyle(strip).display!=='none'){var im=strip.children[i];strip.scrollTo({left:im.offsetLeft-strip.firstElementChild.offsetLeft,behavior:'smooth'});}
+  });});
+  strip.addEventListener('scroll',function(){
+    var w=strip.firstElementChild.getBoundingClientRect().width+8;
+    mark(Math.min(thumbs.length-1,Math.round(strip.scrollLeft/w)));
+  },{passive:true});
+  // options (gold, size): one choice per group; gold also updates the material line under the name
+  document.querySelectorAll('.pdp__choices').forEach(function(g){
+    var opts=g.querySelectorAll('.pdp__choice');
+    opts.forEach(function(o){o.addEventListener('click',function(){
+      opts.forEach(function(x){x.setAttribute('aria-checked','false');});
+      o.setAttribute('aria-checked','true');
+      document.getElementById('pdp-'+g.dataset.opt).innerHTML=o.dataset.value;
+      if(g.dataset.opt==='gold')document.getElementById('pdp-material').innerHTML='18K &middot; '+o.dataset.value;
+      if(g.dataset.opt==='size')document.getElementById('pdp-dim').innerHTML=o.dataset.value;
+    });});
+  });
+  // quantity
+  var q=document.getElementById('pdp-qty');
+  document.querySelectorAll('.pdp__qty button').forEach(function(b){b.addEventListener('click',function(){
+    q.textContent=Math.max(1,(parseInt(q.textContent,10)||1)+parseInt(b.dataset.step,10));
+  });});
+  // shipping drawer: slides in from the right, closes on scrim, X or Escape
+  var drawer=document.getElementById('ship-drawer');
+  var opener=document.querySelector('.pdp__ship');
+  var panel=drawer.querySelector('.drawer__panel');
+  function openDrawer(){drawer.classList.add('is-open');drawer.setAttribute('aria-hidden','false');opener.setAttribute('aria-expanded','true');document.body.classList.add('drawer-open');panel.focus();}
+  function closeDrawer(){drawer.classList.remove('is-open');drawer.setAttribute('aria-hidden','true');opener.setAttribute('aria-expanded','false');document.body.classList.remove('drawer-open');opener.focus();}
+  opener.addEventListener('click',openDrawer);
+  drawer.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeDrawer);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&drawer.classList.contains('is-open'))closeDrawer();});
+})();
+</script>
+</body>
+</html>
