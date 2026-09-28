@@ -328,10 +328,10 @@ body.drawer-open{overflow:hidden;}
 
     <div class="pdp__buy">
       <h1 class="pdp__title">Onyx Jacket Button</h1>
-      <p class="pdp__material" id="pdp-material">18K &middot; White Gold</p>
+      <p class="pdp__material">18K Gold &middot; Natural Black Onyx</p>
       <p class="pdp__price"><span data-slot="price" title="Placeholder estimate, confirm with client">$1,150</span> <span class="pdp__per">per button</span></p>
       <div class="pdp__rule"></div>
-      <p class="pdp__desc">A domed natural black onyx cabochon, set flush in a smooth 18K gold rim, with a sewing shank on the back.</p>
+      <p class="pdp__desc">A domed natural black onyx cabochon, framed in a smooth 18K gold rim, with a sewing shank on the back.</p>
       <p class="pdp__status">Crafted to order in 4&ndash;6 weeks.</p>
       <p class="pdp__status">Each piece is individually numbered.</p>
 
@@ -557,7 +557,6 @@ body.drawer-open{overflow:hidden;}
       opts.forEach(function(x){x.setAttribute('aria-checked','false');});
       o.setAttribute('aria-checked','true');
       document.getElementById('pdp-'+g.dataset.opt).innerHTML=o.dataset.value;
-      if(g.dataset.opt==='gold')document.getElementById('pdp-material').innerHTML='18K &middot; '+o.dataset.value;
       if(g.dataset.opt==='size')document.getElementById('pdp-dim').innerHTML=o.dataset.value;
     });});
   });
